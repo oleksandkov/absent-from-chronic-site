@@ -1,0 +1,72 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - edited_content/index.qmd
+    - edited_content/project/statistical-instructions.qmd
+    - edited_content/pipeline/pipeline-guide.qmd
+    - edited_content/pipeline/cache-manifest.qmd
+    - edited_content/pipeline/input-manifest.qmd
+    - edited_content/data-primer/variable-inclusion.qmd
+    - edited_content/data-primer/univariate-distributions-redirect.qmd
+    - edited_content/analysis/outcome-redirect.qmd
+    - edited_content/analysis/exposure-redirect.qmd
+    - edited_content/analysis/predisposing-redirect.qmd
+    - edited_content/analysis/facilitating-redirect.qmd
+    - edited_content/analysis/needs-redirect.qmd
+    - edited_content/analysis/missingness-redirect.qmd
+    - edited_content/site-map.qmd
+  post-render:
+    - Rscript scripts/copy-analysis-html.R
+
+website:
+  title: "Absent from Chronic"
+  navbar:
+    left:
+      - text: "Project"
+        menu:
+          - text: "Statistical Instructions"
+            href: edited_content/project/statistical-instructions.qmd
+      - text: "Pipeline"
+        menu:
+          - text: "Pipeline Guide"
+            href: edited_content/pipeline/pipeline-guide.qmd
+          - text: "CACHE Manifest"
+            href: edited_content/pipeline/cache-manifest.qmd
+          - text: "INPUT Manifest"
+            href: edited_content/pipeline/input-manifest.qmd
+      - text: "Data Primer"
+        menu:
+          - text: "Variable Inclusion"
+            href: edited_content/data-primer/variable-inclusion.qmd
+          - text: "Univariate Distributions"
+            href: edited_content/data-primer/univariate-distributions-redirect.qmd
+      - text: "Analysis"
+        menu:
+          - text: "Outcome (LOP Day Decomposition)"
+            href: edited_content/analysis/outcome-redirect.qmd
+          - text: "Exposure (Chronic Conditions)"
+            href: edited_content/analysis/exposure-redirect.qmd
+          - text: "Predisposing (Socio-demographic)"
+            href: edited_content/analysis/predisposing-redirect.qmd
+          - text: "Facilitating (Health System & Behaviours)"
+            href: edited_content/analysis/facilitating-redirect.qmd
+          - text: "Needs (Perceived Health & Limitations)"
+            href: edited_content/analysis/needs-redirect.qmd
+          - text: "Missingness"
+            href: edited_content/analysis/missingness-redirect.qmd
+      - text: "Site Map"
+        href: edited_content/site-map.qmd
+
+  page-footer:
+    center: "*Absent from Chronic* — Statistical Analysis Replication | Marc-Andre Blanchette, Research Scientist"
+
+  repo-url: https://github.com/RG-FIDES/absent-from-chronic
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    embed-resources: true
+    mermaid:
+      theme: neutral

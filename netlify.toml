@@ -1,0 +1,56 @@
+[build]
+  command = "bash ./scripts/netlify-build.sh"
+  publish = "_site"
+
+[build.environment]
+  QUARTO_PYTHON = "3.11"
+  R_VERSION = "4.3"
+
+# Redirect the hosted root and top-level section paths into the nested Quarto output.
+[[redirects]]
+  from = "/"
+  to = "/edited_content/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/site-map.html"
+  to = "/edited_content/site-map.html"
+  status = 200
+
+[[redirects]]
+  from = "/project/*"
+  to = "/edited_content/project/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/pipeline/*"
+  to = "/edited_content/pipeline/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/data-primer/*"
+  to = "/edited_content/data-primer/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/analysis/*"
+  to = "/edited_content/analysis/:splat"
+  status = 200
+
+# Redirect old paths to new ones if needed
+[[redirects]]
+  from = "/redirects/*"
+  to = "/:splat"
+  status = 200
+
+# Cache configuration
+[cache]
+  directory = "node_modules"
+
+# Headers for static assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
