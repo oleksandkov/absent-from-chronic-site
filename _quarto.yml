@@ -10,6 +10,7 @@ project:
     - edited_content/data-primer/variable-inclusion.qmd
     - edited_content/data-primer/univariate-distributions-redirect.qmd
     - edited_content/analysis/outcome-redirect.qmd
+    - edited_content/analysis/outcome-distribution-shapes-redirect.qmd
     - edited_content/analysis/exposure-redirect.qmd
     - edited_content/analysis/predisposing-redirect.qmd
     - edited_content/analysis/facilitating-redirect.qmd
@@ -45,6 +46,8 @@ website:
         menu:
           - text: "Outcome (LOP Day Decomposition)"
             href: edited_content/analysis/outcome-redirect.qmd
+          - text: "Outcome (Distribution Shapes)"
+            href: edited_content/analysis/outcome-distribution-shapes-redirect.qmd
           - text: "Exposure (Chronic Conditions)"
             href: edited_content/analysis/exposure-redirect.qmd
           - text: "Predisposing (Socio-demographic)"

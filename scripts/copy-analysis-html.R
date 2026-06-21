@@ -31,6 +31,7 @@ copy_html(
 
 # Analysis reports
 copy_html("analysis/eda-5/eda-5.html", "analysis", "eda-5.html")
+copy_html("analysis/eda-71/eda-71.html", "analysis", "eda-71.html")
 copy_html("analysis/eda-61/eda-61.html", "analysis", "eda-61.html")
 copy_html("analysis/eda-62/eda-62.html", "analysis", "eda-62.html")
 copy_html("analysis/eda-63/eda-63.html", "analysis", "eda-63.html")

@@ -23,6 +23,7 @@ Absent from Chronic — Research Documentation
 │
 ├── Analysis
 │   ├── Outcome (LOP Day Decomposition)         REDIRECT  → eda-5.html
+│   ├── Outcome (Distribution Shapes)           REDIRECT  → eda-71.html
 │   ├── Exposure (Chronic Conditions)           REDIRECT  → eda-61.html
 │   ├── Predisposing (Socio-demographic)        REDIRECT  → eda-62.html
 │   ├── Facilitating (Health System & Behav.)   REDIRECT  → eda-63.html
@@ -54,6 +55,7 @@ The following mapping shows how each page in this site addresses requirements fr
 | Variable Inclusion | §2.2 (required variables) | Traceability record: every §2.2 variable mapped to its Ellis implementation |
 | Univariate Distributions | §4.2 (distribution checks), §5.2 (descriptive stats) | Full univariate profiles for all variables — weighted frequencies, means, missingness |
 | Outcome | §4.1 (construction), §4.2 (distribution) | LOP day decomposition into 8 reason categories; prevalence, contribution, co-occurrence |
+| Outcome (Distribution Shapes) | §4.2 (distribution checks), §5.2 (descriptive stats) | Outcome-distribution diagnostics for LOP day counts; zero-inflation, tail shape, and modeling-oriented distribution structure |
 | Exposure | §2.2 (primary exposure) | Weighted prevalence of 17 chronic conditions; relationship to primary outcome |
 | Predisposing | §2.2 (predisposing factors), §5.3 (bivariate) | Distribution and outcome relationship for 11 socio-demographic variables |
 | Facilitating | §2.2 (facilitating factors), §5.3 (bivariate) | Distribution and outcome relationship for 12 health-system and behaviour variables |
