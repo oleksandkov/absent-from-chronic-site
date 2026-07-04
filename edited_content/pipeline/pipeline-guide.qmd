@@ -2,32 +2,91 @@
 title: "Pipeline Guide"
 ---
 
-![Pipeline Architecture](images/pipeline-architecture.jpg)
-
 # CCHS Absenteeism Pipeline
 
 This document is the execution guide and architecture reference for the CCHS
 absenteeism data pipeline. It describes the seven pipeline artifacts, how to
 run them, and how to diagnose common problems.
 
+## Pipeline Architecture
+
+<!-- PIPELINE-DIAGRAM-SOURCE -->
+```mermaid
+flowchart LR
+    RAW_2010["CCHS2010_LOP.sav\n(~62,909 rows)"]
+    RAW_2014["CCHS_2014_EN_PUMF.sav\n(~63,522 rows)"]
+
+    subgraph Lane0["Lane 0 – Metadata"]
+        META["0-extract-metadata.R\nExtract variable/value labels\nWrite codebook CSVs"]
+    end
+
+    subgraph Lane1["Lane 1 – Ferry"]
+        FERRY["1-ferry.R\nFull transport (zap labels)\nWrite to cchs-1.sqlite"]
+    end
+
+    subgraph Lane2["Lane 2 – Ellis"]
+        ELLIS["2-ellis.R\nAlias resolution\nWhite-list (Tier 1+2)\nSample exclusion\nFactor recoding\nOutcome construction\nWeight pooling"]
+    end
+
+    subgraph Lane3["Lane 3 – Test"]
+        TEST["3-test-ellis-cache.R\nArtifact existence\nSQLite ↔ Parquet parity\nData quality checks\nSample flow validation"]
+    end
+
+    CODEBOOK["data-private/derived/\ncodebook-*.csv"]
+    FERRY_DB["data-private/derived/\ncchs-1.sqlite\n(tables: cchs_2010, cchs_2014)"]
+    FERRY_PQ["data-private/derived/\ncchs-1-ferry/\n*.parquet"]
+    ELLIS_DB["data-private/derived/\ncchs-2.sqlite\n(tables: cchs_analytic, sample_flow)"]
+    ELLIS_PQ["data-private/derived/\ncchs-2-tables/\ncchs_analytic.parquet\nsample_flow.parquet"]
+
+    RAW_2010 --> Lane0 --> CODEBOOK
+    RAW_2014 --> Lane0
+    RAW_2010 --> Lane1 --> FERRY_DB
+    RAW_2014 --> Lane1
+    FERRY_DB --> Lane2 --> ELLIS_DB
+    Lane1 --> FERRY_PQ
+    Lane2 --> ELLIS_PQ
+    ELLIS_DB --> Lane3
+    ELLIS_PQ --> Lane3
+```
+
+<!-- PIPELINE-DIAGRAM -->
+![Pipeline Architecture](../libs/images/pipeline-architecture.jpg)
+
+## Execution Order
+
+Run scripts in numerical order from the project root directory.
+
+```powershell
+Rscript manipulation/0-extract-metadata.R   # ~2-5 min (reads .sav + codebooks)
+Rscript manipulation/1-ferry.R              # ~5-15 min (reads full .sav files)
+Rscript manipulation/2-ellis.R              # ~2-5 min
+Rscript manipulation/3-test-ellis-cache.R   # ~1 min
+```
+
+Or run the full pipeline via `flow.R`:
+
+```powershell
+Rscript flow.R
+```
+
 ## Seven Artifacts
 
 | # | File | Pattern | Status |
-|---|------|---------|--------|
-| 0 | `0-extract-metadata.R` | Discovery | Validated |
-| 1 | `1-ferry.R` | Ferry | Validated |
-| 2 | `2-ellis.R` | Ellis | Validated |
-| 3 | `3-test-ellis-cache.R` | Test | Validated (24/24 pass) |
-| — | `INPUT-manifest.md` | Docs | Populated |
-| — | `CACHE-manifest.md` | Docs | Populated (2026-05-20) |
-| — | `pipeline.md` | Docs | This file |
+| --- | --- | --- | --- |
+| 0 | `manipulation/0-extract-metadata.R` | Discovery | Validated |
+| 1 | `manipulation/1-ferry.R` | Ferry | Validated |
+| 2 | `manipulation/2-ellis.R` | Ellis | Validated |
+| 3 | `manipulation/3-test-ellis-cache.R` | Test | Validated (24/24 pass) |
+| — | `data-public/metadata/INPUT-manifest.md` | Docs | Populated |
+| — | `data-public/metadata/CACHE-manifest.md` | Docs | Populated (2026-05-20) |
+| — | `manipulation/pipeline.md` | Docs | This file |
 
 ## Script Summaries
 
 ### Lane 0 — Extract Metadata (`0-extract-metadata.R`)
 
 Reads both raw `.sav` files with labels preserved (`haven::read_sav(..., user_na = TRUE)`).
-Extracts variable-level and value-level labels, then writes four CSVs.
+Extracts variable-level and value-level labels, then writes four CSVs to `data-private/derived/`.
 Also runs a spot-check that all research-required variables are present in both cycles
 and logs any cross-cycle discrepancies.
 
@@ -40,14 +99,14 @@ and logs any cross-cycle discrepancies.
 
 ### Lane 1 — Ferry (`1-ferry.R`)
 
-Full-transport of both `.sav` files to a SQLite staging database.
+Full-transport of both `.sav` files to a SQLite staging database (`cchs-1.sqlite`).
 Uses `haven::zap_labels()` to strip SPSS attributes before writing so SQLite
 can store plain numeric/character columns. Writes Parquet backups alongside.
 
 **Outputs**:
 
-- SQLite database — tables `cchs_2010` and `cchs_2014` (raw, all variables)
-- Parquet backups — `cchs_2010.parquet`, `cchs_2014.parquet`
+- `cchs-1.sqlite` — tables `cchs_2010` and `cchs_2014` (raw, all variables)
+- `cchs-1-ferry/cchs_2010.parquet`, `cchs_2014.parquet`
 
 **Zero transformation**: column renaming, row filtering, and recoding are
 explicitly forbidden at this stage. Inspect the tables before running Ellis.
@@ -69,8 +128,8 @@ The core transformation lane. Applies:
 
 **Outputs**:
 
-- SQLite database — tables `cchs_analytic` and `sample_flow`
-- Parquet files — `cchs_analytic.parquet`, `sample_flow.parquet`
+- `cchs-2.sqlite` — tables `cchs_analytic` and `sample_flow`
+- `cchs-2-tables/cchs_analytic.parquet`, `sample_flow.parquet`
 
 ### Lane 3 — Test (`3-test-ellis-cache.R`)
 
@@ -96,12 +155,19 @@ After running each lane, verify:
 
 **After Lane 1**:
 
-- Confirm both tables are present in the staging database.
-- Row counts: ~62,909 (2010) and ~63,522 (2014).
+- Query `cchs-1.sqlite` and confirm both tables are present:
+
+```r
+con <- DBI::dbConnect(RSQLite::SQLite(), "./data-private/derived/cchs-1.sqlite")
+DBI::dbListTables(con)  # should return cchs_2010, cchs_2014
+DBI::dbGetQuery(con, "SELECT COUNT(*) FROM cchs_2010")  # ~62,909
+DBI::dbGetQuery(con, "SELECT COUNT(*) FROM cchs_2014")  # ~63,522
+DBI::dbDisconnect(con)
+```
 
 **After Lane 2**:
 
-- Check the `sample_flow` table against the reference in CACHE-manifest.
+- Check the `sample_flow` table against the reference in `CACHE-manifest.md`.
 - Verify final analytic n ≈ 64,141 (prior analysis reference); observed n = 63,843 (−298).
 - If n deviates > 5,000, review the exclusion logic and CCHS code mappings.
 - Check the outcome mean ≈ 1.35 and zero proportion ≈ 71%; observed: mean = 1.35, zero% = 70.5%.
@@ -140,7 +206,7 @@ mapping in the exclusion steps. CCHS uses codes 6/7/8/9 for some variables and
 ## Cross-Cycle Harmonization Reference
 
 | Construct | 2010 variable | 2014 variable | Harmonized name |
-|-----------|--------------|---------------|-----------------|
+| --- | --- | --- | --- |
 | Has regular family doctor | `ACC_50A` | `HCU_1AA` | `hcu_1aa_h` |
 | Country of birth | `SDCGCBG` | `SDCGCB13` | `sdcgcbg_h` |
 
@@ -149,4 +215,16 @@ All other research variables use identical names in both cycles.
 ## Cross-Variable Dependency
 
 `immigration_status` requires **both** `SDCFIMM` and `SDCGRES` (both in `vars_inferred`).
-See INPUT-manifest § Cross-Variable Dependencies for the full rationale.
+See `INPUT-manifest.md` § Cross-Variable Dependencies for the full rationale.
+
+## Configuration Reference
+
+All file paths are sourced from `config.yml`:
+
+| Config key | Default path |
+| --- | --- |
+| `raw_data.cchs_2010` | `./data-private/raw/2026-02-19/CCHS2010_LOP.sav` |
+| `raw_data.cchs_2014` | `./data-private/raw/2026-02-19/CCHS_2014_EN_PUMF.sav` |
+| `database.cchs.ferry_sqlite` | `./data-private/derived/cchs-1.sqlite` |
+| `database.cchs.ellis_sqlite` | `./data-private/derived/cchs-2.sqlite` |
+| `database.cchs.ellis_parquet_dir` | `./data-private/derived/cchs-2-tables/` |
