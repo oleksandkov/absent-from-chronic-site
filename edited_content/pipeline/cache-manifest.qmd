@@ -1,5 +1,5 @@
 ---
-title: "CACHE Manifest"
+title: "CCHS Pipeline — CACHE Manifest"
 ---
 
 # CCHS Pipeline — CACHE Manifest
@@ -41,7 +41,7 @@ Sample exclusion was applied in the following order (see `sample_flow` table):
 > `flag_analytic_complete`) without excluding rows. They are not recorded in the
 > `sample_flow` table.
 
-Reference final n from the initial exploration of the data: **64,141**.
+Prior-analysis reference final n: **64,141** (Kermiche et al., 2025).
 Observed n: **63,843** — deviation of 298 rows (within the ±5,000 warning threshold).
 
 ## Survey Weights
@@ -68,7 +68,7 @@ days_absent_total = lopg040 + lopg070 + lopg082 + lopg083 +
                     lopg084 + lopg085 + lopg086 + lopg100
 ```
 
-**Reference from the initial exploration of the data** (Table 2):
+**Prior-analysis reference** (Kermiche et al. 2025, Table 2):
 
 - Mean = 1.35 (SE = 0.02)
 - Zero proportion = 70.59%
@@ -147,14 +147,6 @@ subset the 42,064 rows where all 17 indicators are non-NA.
 | `immigration_status` | `SDCFIMM` + `SDCGRES` | Non-immigrant (55,066), Long-term immigrant (6,317), Recent immigrant (2,092) | 63,475 |
 | `visible_minority` | `SDCGCGT` | White (54,105), Visible minority (9,259) | 63,364 |
 
-> **Fix applied (2026-05-20) — `immigration_status` construction:** SPSS stores
-> SDCGRES code 6 ("NOT APPLICABLE" = Canadian-born) as **system missing**, which
-> becomes `NA` after `haven::zap_labels()` in the Ferry. The previous recode
-> `sdcgres == 6 ~ "Non-immigrant"` therefore never fired, leaving ~86% of analytic
-> rows as NA. The fix uses `SDCFIMM == 2` (NO, not an immigrant) to identify
-> non-immigrants, resolving near-complete coverage. `SDCFIMM` was added to
-> `vars_inferred` and is retained as raw column `sdcfimm` in the output.
-
 ### Facilitating
 
 | Column | Source | Levels / Range | n (non-NA) |
@@ -172,9 +164,6 @@ subset the 42,064 rows where all 17 indicators are non-NA.
 | `physical_activity` | `PACDPAI` | Active (18,610), Moderately active (16,593), Inactive (28,619) | 63,822 |
 | `bmi_category` | `HWTGISW` | Underweight (1,110), Normal weight (25,153), Overweight (20,395), Obese (12,743) | 59,401 |
 | `hwtgbmi` | `HWTGBMI` | Continuous (kg/m²) | — |
-
-> **Note — `province`:** YK = 2,055; NT = 0; NU = 0. The NT and NU factor
-> levels are retained in the output but contain no rows in this combined sample.
 
 ### Needs
 
@@ -207,31 +196,12 @@ subset the 42,064 rows where all 17 indicators are non-NA.
 | `flag_complete_predictors` | All key predictor variables non-NA | 59,309 |
 | `flag_analytic_complete` | Both CCC and predictor flags TRUE | 39,702 |
 
-> **Note:** These flags allow analysts to subset for fully complete cases without
-> re-running exclusion logic. Rows with `flag_analytic_complete == FALSE` are
-> retained in the file for sensitivity analysis.
-
 ## Usage Notes for Analysts
 
 - All factor levels are explicitly defined; do not rely on integer codes.
 - Perceived health variables are recoded from raw CCHS codes (1 = best, 5 = worst)
-  to labelled factors. Output columns are `health_perceived` (source: `GEN_01`),
-  `mental_health_perceived` (source: `GEN_02B`), and `health_vs_prior_year`
-  (source: `GEN_02`). Excellent / Much better is the first factor level in each.
-- `work_stress` (source: `GEN_09`) is an ordered factor with 5 levels from
-  "Not at all stressful" to "Extremely stressful". Note: this captures
-  self-perceived general work stress (not specifically job demands).
-- ADL limitation columns (`adl_meals`, `adl_errands`, `adl_housework`,
-  `adl_personal_care`, `adl_moving_indoors`, `adl_finances`) are "No"/"Yes"
-  factors. Prevalence of "Yes" is very low (~0.8%) in this employed sample.
-- `smoking_status` collapses SMKDSTY's 6 codes to 4 groups: Daily, Occasional
-  (codes 2+3), Former (codes 4+5), Never smoked.
-- `occupation_category` uses 2010 descriptive labels for both cycles; 2014 PUMF
-  labels the same 5 groups only as "GROUP 1"–"GROUP 5".
-- The 17 `cc_*` columns are logical. Use `as.integer(cc_*)` to get 0/1 for
-  regression models.
+  to labelled factors.
+- ADL limitation columns are "No"/"Yes" factors. Prevalence of "Yes" is very low (~0.8%) in this employed sample.
 - Always use `wts_m_pooled` (not `wts_m`) for weighted analyses.
 - No bootstrap weights are available; report confidence intervals from survey
   design-based variance or note this limitation in publications.
-- CCHS PUMF terms of use: results may not be published without review per your
-  data sharing agreement with Statistics Canada.

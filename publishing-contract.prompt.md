@@ -3,13 +3,13 @@
 ## Purpose
 
 A research documentation site for the study *"Predictors of Work Absenteeism Associated with
-Chronic Conditions Among Canadian Workers"* - a descriptive epidemiology study of the Loss of Productivity (LOP) module in thekl Canadian Community Health Survey (CCHS) 2010–2011 and 2013–2014 cycles.
+Chronic Conditions Among Canadian Workers"*, built for Marc-Andre Blanchette — the study's lead
+research scientist and principal investigator.
 
 The site provides a structured, navigable record of statistical analysis requirements, data
 pipeline documentation, variable selection rationale, and exploratory descriptive findings
 organized by the Andersen Behavioral Model domains. Its organizing principle is evidence: every
-section corresponds to a layer of work that responds to requirements in the Project Proposal
-(`stats_instructions_v3.md`).
+section corresponds to a layer of work that responds to requirements in `stats_instructions_v3.md`.
 
 The audience is a single expert reader (the PI) who wants to verify coverage — not a general
 public site. Tone is professional and direct. Content is shown essentially as the analyst produced
@@ -27,16 +27,11 @@ it.
   clean, and the five Andersen Model domains are profiled.
 - **Goal**: Home page — the first thing a visitor sees.
 - **Spirit**: Professional and direct. Lead with the study title and purpose, anchored by the LOP
-  days distribution chart (`g01_lop_days_histogram.png`) under an **Outcome in Focus** heading.
-  Include a study identification block near the top with the full study name and author line:
-  Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval.
-  Immediately below G01, place `g23_chronic_vs_other_only_raw_split_distribution.png` to show
-  distribution shape context. Show
-  the pipeline architecture image (`pipeline-architecture.jpg`) to convey infrastructure maturity.
-  Include a brief navigation
+  days distribution chart (`g01_lop_days_histogram.png`). Show the pipeline architecture image
+  (`pipeline-architecture.jpg`) to convey infrastructure maturity. Include a brief navigation
   guide pointing visitors to each section. No marketing language.
-- **Image 1**: `analysis/eda-71/prints/g23_chronic_vs_other_only_raw_split_distribution.png` — place immediately below G01 in
-  the **Outcome in Focus** section.
+- **Image 1**: `images/g01_lop_days_histogram.png` — copied from
+  `analysis/eda-5/prints/g01_lop_days_histogram.png` by the pre-render hook.
 - **Image 2**: `images/pipeline-architecture.jpg` — copied from
   `libs/images/pipeline-architecture.jpg` by the pre-render hook.
 - **Inputs**: `README.md` (project overview), `data-public/metadata/CACHE-manifest.md`
@@ -47,7 +42,7 @@ it.
 
 ### Project
 
-#### Project Proposal
+#### Statistical Instructions
 
 - **Protocol**: Technical Bridge
 - **Source**: `./data-private/raw/2026-02-19/stats_instructions_v3.md`
@@ -111,12 +106,6 @@ it.
 - **Source**: `./analysis/eda-5/eda-5.html`
 - **Label**: Outcome (LOP Day Decomposition)
 
-#### Outcome (Distribution Shapes)
-
-- **Protocol**: Direct Line (REDIRECTED)
-- **Source**: `./analysis/eda-71/eda-71.html`
-- **Label**: Outcome (Distribution Shapes)
-
 #### Exposure
 
 - **Protocol**: Direct Line (REDIRECTED)
@@ -141,12 +130,6 @@ it.
 - **Source**: `./analysis/eda-64/eda-64.html`
 - **Label**: Needs (Perceived Health & Limitations)
 
-#### Missingness
-
-- **Protocol**: Direct Line (REDIRECTED)
-- **Source**: `./analysis/eda-65/eda-65.html`
-- **Label**: Missingness
-
 ---
 
 ### Site Map
@@ -154,13 +137,13 @@ it.
 - **Protocol**: Narrative Bridge
 - **Intent**: Help Marc-Andre navigate the site and understand what each section contains and how
   it maps to the statistical analysis requirements.
-- **Goal**: Site map — an oriented index of all pages with explicit Project Proposal linkage.
-- **Spirit**: Concise and functional. Structure the page in this exact order:
-  **Navigation Structure**, **Content Type**, **Proposal Coverage**. In **Navigation Structure**,
-  use an ASCII tree in a plain-text code block with branch-drawing characters (`├──`, `└──`, `│`)
-  and consistent indentation. In **Content Type**, define each type used on the site (VERBATIM,
-  REDIRECTED, TECHNICAL BRIDGE, NARRATIVE BRIDGE). In **Proposal Coverage**, link each site page
-  to relevant Project Proposal section(s) and describe its current coverage status.
+- **Goal**: Site map — an oriented index of all pages with stats instructions coverage.
+- **Spirit**: Concise and functional. Open with the **Navigation Structure** — an ASCII tree
+  annotating every page with its content type (VERBATIM, REDIRECTED, TECHNICAL BRIDGE,
+  NARRATIVE BRIDGE) and source provenance. Follow with a **Stats Instructions Coverage** section
+  mapping each page to the requirement it addresses (e.g., Data Primer → §2.2 variable
+  selection; Outcome → §4.1–§4.2 outcome construction; Exposure/Predisposing/Facilitating/Needs
+  → §2.2 predictor domains and §4.3 bivariate associations).
 - **Inputs**: Contract navigation structure (this file),
   `data-private/raw/2026-02-19/stats_instructions_v3.md` (section headings for mapping).
 
@@ -188,7 +171,7 @@ flatly
 
 ## Footer
 
-*Absent from Chronic* | Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval | 2026
+*Absent from Chronic* — Statistical Analysis Replication | Marc-Andre Blanchette, Research Scientist
 
 ---
 

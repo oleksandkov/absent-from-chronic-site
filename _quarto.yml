@@ -3,7 +3,7 @@ project:
   output-dir: _site
   render:
     - edited_content/index.qmd
-    - edited_content/project/project-proposal.qmd
+    - edited_content/project/statistical-instructions.qmd
     - edited_content/pipeline/pipeline-guide.qmd
     - edited_content/pipeline/cache-manifest.qmd
     - edited_content/pipeline/input-manifest.qmd
@@ -26,8 +26,8 @@ website:
     left:
       - text: "Project"
         menu:
-          - text: "Project Proposal"
-            href: edited_content/project/project-proposal.qmd
+          - text: "Statistical Instructions"
+            href: edited_content/project/statistical-instructions.qmd
       - text: "Pipeline"
         menu:
           - text: "Pipeline Guide"
@@ -62,7 +62,7 @@ website:
         href: edited_content/site-map.qmd
 
   page-footer:
-    center: "*Absent from Chronic* | Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval | 2026"
+    center: "*Absent from Chronic* — Statistical Analysis Replication | Marc-Andre Blanchette, Research Scientist"
 
   repo-url: https://github.com/RG-FIDES/absent-from-chronic
 
@@ -70,5 +70,6 @@ format:
   html:
     theme: flatly
     toc: true
+    embed-resources: true
     mermaid:
       theme: neutral

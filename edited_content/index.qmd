@@ -1,33 +1,23 @@
 ---
-title: "🏠 Absent from Chronic"
-format:
-  html:
-    page-layout: full
-    toc: false
+title: "Absent from Chronic"
+subtitle: "Predictors of Work Absenteeism Associated with Chronic Conditions Among Canadian Workers"
 ---
-🏠   
 
-**Predictors of Work Absenteeism Associated with Chronic Conditions Among Canadian Workers**
-
-Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval
-
-
-## Outcome in Focus
-
-![Distribution split profile of absenteeism days highlighting outcome shape differences.](../../../analysis/eda-71/prints/g23_chronic_vs_other_only_raw_split_distribution.png){fig-alt="Outcome distribution split profile" width="90%"}
+![Distribution of total workdays absent in the past 3 months across the employed Canadian population (n = 63,843). Over 70% of workers report zero absent days; the distribution is heavily right-skewed with a maximum of 63 days observed.](images/g01_lop_days_histogram.png){width=90%}
 
 ## Welcome
 
-This site presents the project response to the Project Proposal for the study on predictors of work absenteeism among Canadian workers with chronic conditions.
+This site documents the statistical analysis replication for the study *"Predictors of Work Absenteeism Associated with Chronic Conditions Among Canadian Workers"* (Kermiche, Blanchette, & Laprise, 2025). The analysis draws on two pooled cycles of the Canadian Community Health Survey (CCHS 2010–2011 and 2013–2014), producing an analytic sample of 63,843 employed respondents representing approximately 17.8 million Canadian workers.
 
-The Project section contains the full Project Proposal document used as the governing brief for this analysis.
+The site is organized into four sections:
 
-The Pipeline section documents how source data were processed into analysis-ready artifacts and includes both INPUT and CACHE manifests.
+- **Project** — The statistical analysis instructions that define the study's requirements (§1–§6), including variable selection, sample construction, and the full analytic plan.
+- **Pipeline** — Technical documentation of the data pipeline that transforms raw CCHS SPSS files into analysis-ready Parquet datasets, including the CACHE and INPUT manifests.
+- **Data Primer** — Variable traceability (§2.2 requirements vs. implementation) and univariate distribution profiles for all 69 variables in the analytic dataset.
+- **Analysis** — Five exploratory reports organized by the Andersen Behavioral Model domains: Outcome (LOP day decomposition), Exposure (17 chronic conditions), Predisposing (socio-demographics), Facilitating (health system and behaviours), and Needs (perceived health and functional limitations).
 
-The Data Primer section provides variable traceability and univariate profile outputs. The Analysis section provides outcome and domain-specific reports (Exposure, Predisposing, Facilitating, Needs).
+## Pipeline Architecture
 
-## Pipeline
+The data flows through four sequential lanes — from raw SPSS files through metadata extraction, full transport (Ferry), cleaning and transformation (Ellis), to automated validation (Test). All outputs are version-controlled and reproducible.
 
-![Pipeline architecture used to process pooled CCHS cycles into analysis outputs.](images/pipeline-architecture.jpg){fig-alt="Pipeline architecture" width="90%"}
-
-For detailed page-level mapping from the Project Proposal to site content, see [Site Map](site-map.qmd).
+![Pipeline architecture showing the four-lane flow from raw CCHS data through metadata extraction, ferry transport, Ellis transformation, and automated testing.](images/pipeline-architecture.jpg){width=90%}

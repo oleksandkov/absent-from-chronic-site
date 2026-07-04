@@ -1,14 +1,14 @@
 ---
-title: "Project Proposal"
+title: "Statistical Analysis Instructions"
 ---
 
-# Project Proposal
+# Statistical Analysis Instructions
 
 **"Predictors of Work Absenteeism Associated with Chronic Conditions Among Canadian Workers: An Analysis of the Canadian Community Health Survey"**
 
-A Research Investigation by
+Kermiche T., Blanchette M.-A., Laprise C. (Université de Montréal / UQTR, 2025)
 
-Blanchette M.-A., Oleksandr Koval, Andriy Koval.
+Prepared for: Independent Biostatistician
 
 ---
 
