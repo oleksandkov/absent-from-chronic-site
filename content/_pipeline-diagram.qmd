@@ -8,7 +8,7 @@ flowchart LR
     end
 
     subgraph Lane1["Lane 1 – Ferry"]
-        FERRY["1-ferry.R\nFull transport (zap labels)\nWrite to cchs-1.sqlite"]
+        FERRY["1-ferry.R\nFull transport (zap labels)\nWrite to staging SQLite"]
     end
 
     subgraph Lane2["Lane 2 – Ellis"]
@@ -19,11 +19,11 @@ flowchart LR
         TEST["3-test-ellis-cache.R\nArtifact existence\nSQLite ↔ Parquet parity\nData quality checks\nSample flow validation"]
     end
 
-    CODEBOOK["codebook-*.csv"]
-    FERRY_DB["cchs-1.sqlite\n(tables: cchs_2010, cchs_2014)"]
-    FERRY_PQ["cchs-1-ferry/\n*.parquet"]
-    ELLIS_DB["cchs-2.sqlite\n(tables: cchs_analytic, sample_flow)"]
-    ELLIS_PQ["cchs-2-tables/\ncchs_analytic.parquet\nsample_flow.parquet"]
+    CODEBOOK["Codebook CSVs\n(4 files)"]
+    FERRY_DB["Staging SQLite\n(cchs_2010, cchs_2014)"]
+    FERRY_PQ["Staging Parquet\n(cchs_2010, cchs_2014)"]
+    ELLIS_DB["Analytic SQLite\n(cchs_analytic, sample_flow)"]
+    ELLIS_PQ["Analytic Parquet\n(cchs_analytic, sample_flow)"]
 
     RAW_2010 --> Lane0 --> CODEBOOK
     RAW_2014 --> Lane0

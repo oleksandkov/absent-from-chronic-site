@@ -2,32 +2,32 @@
 title: "Pipeline Guide"
 ---
 
-![Pipeline Architecture](images/pipeline-architecture.jpg)
-
-# CCHS Absenteeism Pipeline
-
 This document is the execution guide and architecture reference for the CCHS
-absenteeism data pipeline. It describes the seven pipeline artifacts, how to
-run them, and how to diagnose common problems.
+absenteeism data pipeline. It describes the seven pipeline artifacts, how they
+fit together, and how to diagnose common problems.
+
+## Pipeline Architecture
+
+{{< include ../_pipeline-diagram.qmd >}}
 
 ## Seven Artifacts
 
 | # | File | Pattern | Status |
-|---|------|---------|--------|
-| 0 | `0-extract-metadata.R` | Discovery | Validated |
-| 1 | `1-ferry.R` | Ferry | Validated |
-| 2 | `2-ellis.R` | Ellis | Validated |
-| 3 | `3-test-ellis-cache.R` | Test | Validated (24/24 pass) |
-| — | `INPUT-manifest.md` | Docs | Populated |
-| — | `CACHE-manifest.md` | Docs | Populated (2026-05-20) |
-| — | `pipeline.md` | Docs | This file |
+| --- | --- | --- | --- |
+| 0 | `manipulation/0-extract-metadata.R` | Discovery | Validated |
+| 1 | `manipulation/1-ferry.R` | Ferry | Validated |
+| 2 | `manipulation/2-ellis.R` | Ellis | Validated |
+| 3 | `manipulation/3-test-ellis-cache.R` | Test | Validated (24/24 pass) |
+| — | `data-public/metadata/INPUT-manifest.md` | Docs | Populated |
+| — | `data-public/metadata/CACHE-manifest.md` | Docs | Populated (2026-05-20) |
+| — | `manipulation/pipeline.md` | Docs | This document |
 
 ## Script Summaries
 
 ### Lane 0 — Extract Metadata (`0-extract-metadata.R`)
 
 Reads both raw `.sav` files with labels preserved (`haven::read_sav(..., user_na = TRUE)`).
-Extracts variable-level and value-level labels, then writes four CSVs.
+Extracts variable-level and value-level labels, then writes four codebook CSVs.
 Also runs a spot-check that all research-required variables are present in both cycles
 and logs any cross-cycle discrepancies.
 
@@ -46,8 +46,8 @@ can store plain numeric/character columns. Writes Parquet backups alongside.
 
 **Outputs**:
 
-- SQLite database — tables `cchs_2010` and `cchs_2014` (raw, all variables)
-- Parquet backups — `cchs_2010.parquet`, `cchs_2014.parquet`
+- Staging SQLite — tables `cchs_2010` and `cchs_2014` (raw, all variables)
+- Staging Parquet — `cchs_2010.parquet`, `cchs_2014.parquet`
 
 **Zero transformation**: column renaming, row filtering, and recoding are
 explicitly forbidden at this stage. Inspect the tables before running Ellis.
@@ -69,8 +69,8 @@ The core transformation lane. Applies:
 
 **Outputs**:
 
-- SQLite database — tables `cchs_analytic` and `sample_flow`
-- Parquet files — `cchs_analytic.parquet`, `sample_flow.parquet`
+- Analytic SQLite — tables `cchs_analytic` and `sample_flow`
+- Analytic Parquet — `cchs_analytic.parquet`, `sample_flow.parquet`
 
 ### Lane 3 — Test (`3-test-ellis-cache.R`)
 
@@ -96,12 +96,12 @@ After running each lane, verify:
 
 **After Lane 1**:
 
-- Confirm both tables are present in the staging database.
-- Row counts: ~62,909 (2010) and ~63,522 (2014).
+- Query the staging SQLite and confirm both tables are present with expected row counts
+  (~62,909 for 2010, ~63,522 for 2014).
 
 **After Lane 2**:
 
-- Check the `sample_flow` table against the reference in CACHE-manifest.
+- Check the `sample_flow` table against the reference in the CACHE Manifest.
 - Verify final analytic n ≈ 64,141 (prior analysis reference); observed n = 63,843 (−298).
 - If n deviates > 5,000, review the exclusion logic and CCHS code mappings.
 - Check the outcome mean ≈ 1.35 and zero proportion ≈ 71%; observed: mean = 1.35, zero% = 70.5%.
@@ -140,13 +140,8 @@ mapping in the exclusion steps. CCHS uses codes 6/7/8/9 for some variables and
 ## Cross-Cycle Harmonization Reference
 
 | Construct | 2010 variable | 2014 variable | Harmonized name |
-|-----------|--------------|---------------|-----------------|
+| --- | --- | --- | --- |
 | Has regular family doctor | `ACC_50A` | `HCU_1AA` | `hcu_1aa_h` |
 | Country of birth | `SDCGCBG` | `SDCGCB13` | `sdcgcbg_h` |
 
 All other research variables use identical names in both cycles.
-
-## Cross-Variable Dependency
-
-`immigration_status` requires **both** `SDCFIMM` and `SDCGRES` (both in `vars_inferred`).
-See INPUT-manifest § Cross-Variable Dependencies for the full rationale.
