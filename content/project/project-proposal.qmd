@@ -1,5 +1,0 @@
----
-title: "Project Proposal"
----
-
-{{< include _proposal.md >}}
