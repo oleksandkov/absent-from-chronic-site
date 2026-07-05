@@ -1,9 +1,0 @@
----
-title: "Outcome (LOP Day Decomposition)"
-format:
-  html:
-    page-layout: full
-    toc: false
----
-
-<meta http-equiv="refresh" content="0; url=eda-5.html">
