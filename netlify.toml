@@ -9,32 +9,32 @@
 # Redirect the hosted root and top-level section paths into the nested Quarto output.
 [[redirects]]
   from = "/"
-  to = "/edited_content/index.html"
+  to = "/content/index.html"
   status = 200
 
 [[redirects]]
   from = "/site-map.html"
-  to = "/edited_content/site-map.html"
+  to = "/content/site-map.html"
   status = 200
 
 [[redirects]]
   from = "/project/*"
-  to = "/edited_content/project/:splat"
+  to = "/content/project/:splat"
   status = 200
 
 [[redirects]]
   from = "/pipeline/*"
-  to = "/edited_content/pipeline/:splat"
+  to = "/content/pipeline/:splat"
   status = 200
 
 [[redirects]]
   from = "/data-primer/*"
-  to = "/edited_content/data-primer/:splat"
+  to = "/content/data-primer/:splat"
   status = 200
 
 [[redirects]]
   from = "/analysis/*"
-  to = "/edited_content/analysis/:splat"
+  to = "/content/analysis/:splat"
   status = 200
 
 # Redirect old paths to new ones if needed
