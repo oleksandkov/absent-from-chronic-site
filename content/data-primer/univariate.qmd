@@ -1,0 +1,11 @@
+---
+title: "Univariate Distributions"
+format:
+  html:
+    page-layout: full
+    toc: false
+---
+
+<meta http-equiv="refresh" content="0; url=univariate-distributions.html">
+
+[View the Univariate Distributions report](univariate-distributions.html)
