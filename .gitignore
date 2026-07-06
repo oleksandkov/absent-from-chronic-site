@@ -1,5 +1,5 @@
-_site/
 .vercel
 .vscode
 .quarto
 node_modules/
+_site/
