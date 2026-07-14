@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Absent from Chronic - Pipeline Guide</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="mermaid-theme" content="neutral">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Absent from Chronic</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../../content/project/project-proposal.html" rel="" target="">
+ <span class="dropdown-text">Project Proposal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pipeline" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Pipeline</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pipeline">    
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/pipeline-guide.html" rel="" target="">
+ <span class="dropdown-text">Pipeline Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/cache-manifest.html" rel="" target="">
+ <span class="dropdown-text">CACHE Manifest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/input-manifest.html" rel="" target="">
+ <span class="dropdown-text">INPUT Manifest</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-primer" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Data Primer</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-primer">    
+        <li>
+    <a class="dropdown-item" href="../../content/data-primer/variable-inclusion.html" rel="" target="">
+ <span class="dropdown-text">Variable Inclusion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/data-primer/univariate-distributions.html" rel="" target="">
+ <span class="dropdown-text">Univariate Distributions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/outcome.html" rel="" target="">
+ <span class="dropdown-text">Outcome (LOP Day Decomposition)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/outcome-distribution.html" rel="" target="">
+ <span class="dropdown-text">Outcome (Distribution Shapes)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/exposure.html" rel="" target="">
+ <span class="dropdown-text">Exposure (Chronic Conditions)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/predisposing.html" rel="" target="">
+ <span class="dropdown-text">Predisposing (Socio-demographic)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/facilitating.html" rel="" target="">
+ <span class="dropdown-text">Facilitating (Health System &amp; Behaviours)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/needs.html" rel="" target="">
+ <span class="dropdown-text">Needs (Perceived Health &amp; Limitations)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/missingness.html" rel="" target="">
+ <span class="dropdown-text">Missingness</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/site-map.html" rel="" target="">
+ <span class="menu-text">Site Map</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pipeline-architecture" id="toc-pipeline-architecture" class="nav-link active" data-scroll-target="#pipeline-architecture">Pipeline Architecture</a></li>
+  <li><a href="#seven-artifacts" id="toc-seven-artifacts" class="nav-link" data-scroll-target="#seven-artifacts">Seven Artifacts</a></li>
+  <li><a href="#script-summaries" id="toc-script-summaries" class="nav-link" data-scroll-target="#script-summaries">Script Summaries</a>
+  <ul class="collapse">
+  <li><a href="#lane-0-extract-metadata-0-extract-metadata.r" id="toc-lane-0-extract-metadata-0-extract-metadata.r" class="nav-link" data-scroll-target="#lane-0-extract-metadata-0-extract-metadata.r">Lane 0 — Extract Metadata (<code>0-extract-metadata.R</code>)</a></li>
+  <li><a href="#lane-1-ferry-1-ferry.r" id="toc-lane-1-ferry-1-ferry.r" class="nav-link" data-scroll-target="#lane-1-ferry-1-ferry.r">Lane 1 — Ferry (<code>1-ferry.R</code>)</a></li>
+  <li><a href="#lane-2-ellis-2-ellis.r" id="toc-lane-2-ellis-2-ellis.r" class="nav-link" data-scroll-target="#lane-2-ellis-2-ellis.r">Lane 2 — Ellis (<code>2-ellis.R</code>)</a></li>
+  <li><a href="#lane-3-test-3-test-ellis-cache.r" id="toc-lane-3-test-3-test-ellis-cache.r" class="nav-link" data-scroll-target="#lane-3-test-3-test-ellis-cache.r">Lane 3 — Test (<code>3-test-ellis-cache.R</code>)</a></li>
+  </ul></li>
+  <li><a href="#diagnostic-checkpoints" id="toc-diagnostic-checkpoints" class="nav-link" data-scroll-target="#diagnostic-checkpoints">Diagnostic Checkpoints</a></li>
+  <li><a href="#common-issues" id="toc-common-issues" class="nav-link" data-scroll-target="#common-issues">Common Issues</a></li>
+  <li><a href="#cross-cycle-harmonization-reference" id="toc-cross-cycle-harmonization-reference" class="nav-link" data-scroll-target="#cross-cycle-harmonization-reference">Cross-Cycle Harmonization Reference</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pipeline Guide</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This document is the execution guide and architecture reference for the CCHS absenteeism data pipeline. It describes the seven pipeline artifacts, how they fit together, and how to diagnose common problems.</p>
+<section id="pipeline-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-architecture">Pipeline Architecture</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    RAW_2010["CCHS2010_LOP.sav\n(~62,909 rows)"]
+    RAW_2014["CCHS_2014_EN_PUMF.sav\n(~63,522 rows)"]
+
+    subgraph Lane0["Lane 0 – Metadata"]
+        META["0-extract-metadata.R\nExtract variable/value labels\nWrite codebook CSVs"]
+    end
+
+    subgraph Lane1["Lane 1 – Ferry"]
+        FERRY["1-ferry.R\nFull transport (zap labels)\nWrite to staging SQLite"]
+    end
+
+    subgraph Lane2["Lane 2 – Ellis"]
+        ELLIS["2-ellis.R\nAlias resolution\nWhite-list (Tier 1+2)\nSample exclusion\nFactor recoding\nOutcome construction\nWeight pooling"]
+    end
+
+    subgraph Lane3["Lane 3 – Test"]
+        TEST["3-test-ellis-cache.R\nArtifact existence\nSQLite ↔ Parquet parity\nData quality checks\nSample flow validation"]
+    end
+
+    CODEBOOK["Codebook CSVs\n(4 files)"]
+    FERRY_DB["Staging SQLite\n(cchs_2010, cchs_2014)"]
+    FERRY_PQ["Staging Parquet\n(cchs_2010, cchs_2014)"]
+    ELLIS_DB["Analytic SQLite\n(cchs_analytic, sample_flow)"]
+    ELLIS_PQ["Analytic Parquet\n(cchs_analytic, sample_flow)"]
+
+    RAW_2010 --&gt; Lane0 --&gt; CODEBOOK
+    RAW_2014 --&gt; Lane0
+    RAW_2010 --&gt; Lane1 --&gt; FERRY_DB
+    RAW_2014 --&gt; Lane1
+    FERRY_DB --&gt; Lane2 --&gt; ELLIS_DB
+    Lane1 --&gt; FERRY_PQ
+    Lane2 --&gt; ELLIS_PQ
+    ELLIS_DB --&gt; Lane3
+    ELLIS_PQ --&gt; Lane3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="seven-artifacts" class="level2">
+<h2 class="anchored" data-anchor-id="seven-artifacts">Seven Artifacts</h2>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>File</th>
+<th>Pattern</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><code>manipulation/0-extract-metadata.R</code></td>
+<td>Discovery</td>
+<td>Validated</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><code>manipulation/1-ferry.R</code></td>
+<td>Ferry</td>
+<td>Validated</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><code>manipulation/2-ellis.R</code></td>
+<td>Ellis</td>
+<td>Validated</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><code>manipulation/3-test-ellis-cache.R</code></td>
+<td>Test</td>
+<td>Validated (24/24 pass)</td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td><code>data-public/metadata/INPUT-manifest.md</code></td>
+<td>Docs</td>
+<td>Populated</td>
+</tr>
+<tr class="even">
+<td>—</td>
+<td><code>data-public/metadata/CACHE-manifest.md</code></td>
+<td>Docs</td>
+<td>Populated (2026-05-20)</td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td><code>manipulation/pipeline.md</code></td>
+<td>Docs</td>
+<td>This document</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="script-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="script-summaries">Script Summaries</h2>
+<section id="lane-0-extract-metadata-0-extract-metadata.r" class="level3">
+<h3 class="anchored" data-anchor-id="lane-0-extract-metadata-0-extract-metadata.r">Lane 0 — Extract Metadata (<code>0-extract-metadata.R</code>)</h3>
+<p>Reads both raw <code>.sav</code> files with labels preserved (<code>haven::read_sav(..., user_na = TRUE)</code>). Extracts variable-level and value-level labels, then writes four codebook CSVs. Also runs a spot-check that all research-required variables are present in both cycles and logs any cross-cycle discrepancies.</p>
+<p><strong>Outputs</strong>:</p>
+<ul>
+<li><code>codebook-variable-labels.csv</code> — variable name + label for each cycle</li>
+<li><code>codebook-value-labels.csv</code> — code-to-label mapping for all labelled variables</li>
+<li><code>codebook-cycle-comparison.csv</code> — variable presence in 2010 vs 2014</li>
+<li><code>codebook-research-vars-check.csv</code> — pass/fail for the 50+ research variables</li>
+</ul>
+</section>
+<section id="lane-1-ferry-1-ferry.r" class="level3">
+<h3 class="anchored" data-anchor-id="lane-1-ferry-1-ferry.r">Lane 1 — Ferry (<code>1-ferry.R</code>)</h3>
+<p>Full-transport of both <code>.sav</code> files to a SQLite staging database. Uses <code>haven::zap_labels()</code> to strip SPSS attributes before writing so SQLite can store plain numeric/character columns. Writes Parquet backups alongside.</p>
+<p><strong>Outputs</strong>:</p>
+<ul>
+<li>Staging SQLite — tables <code>cchs_2010</code> and <code>cchs_2014</code> (raw, all variables)</li>
+<li>Staging Parquet — <code>cchs_2010.parquet</code>, <code>cchs_2014.parquet</code></li>
+</ul>
+<p><strong>Zero transformation</strong>: column renaming, row filtering, and recoding are explicitly forbidden at this stage. Inspect the tables before running Ellis.</p>
+</section>
+<section id="lane-2-ellis-2-ellis.r" class="level3">
+<h3 class="anchored" data-anchor-id="lane-2-ellis-2-ellis.r">Lane 2 — Ellis (<code>2-ellis.R</code>)</h3>
+<p>The core transformation lane. Applies:</p>
+<ol type="1">
+<li><strong>Alias resolution</strong> — renames the two known cross-cycle variable name differences (<code>ACC_50A</code> → <code>hcu_1aa_h</code>, <code>SDCGCBG</code> → <code>sdcgcbg_h</code>).</li>
+<li><strong>White-list enforcement</strong> — Tier 1 (CONFIRMED) causes <code>stop()</code> if absent; Tier 2 (INFERRED) causes <code>warning()</code> and graceful drop.</li>
+<li><strong>Sample exclusion</strong> — five steps (0–4) recorded in the <code>sample_flow</code> audit table. Steps 5–6 create completeness flags (<code>flag_complete_ccc</code>, <code>flag_complete_predictors</code>) without excluding rows; they are not written to <code>sample_flow</code>.</li>
+<li><strong>Weight pooling</strong> — <code>wts_m_pooled = wts_m / 2</code>.</li>
+<li><strong>Outcome construction</strong> — <code>days_absent_total</code> (sum of 8 LOP components, capped at 90).</li>
+<li><strong>Factor recoding</strong> — all categorical variables recoded with explicit levels.</li>
+</ol>
+<p><strong>Outputs</strong>:</p>
+<ul>
+<li>Analytic SQLite — tables <code>cchs_analytic</code> and <code>sample_flow</code></li>
+<li>Analytic Parquet — <code>cchs_analytic.parquet</code>, <code>sample_flow.parquet</code></li>
+</ul>
+</section>
+<section id="lane-3-test-3-test-ellis-cache.r" class="level3">
+<h3 class="anchored" data-anchor-id="lane-3-test-3-test-ellis-cache.r">Lane 3 — Test (<code>3-test-ellis-cache.R</code>)</h3>
+<p>Four assertion sections:</p>
+<ol type="1">
+<li><strong>Artifact existence</strong> — SQLite and Parquet files present.</li>
+<li><strong>Cross-format parity</strong> — row and column counts match between SQLite and Parquet.</li>
+<li><strong>Data quality</strong> — sample size range, weight positivity, outcome range and zero proportion, chronic condition column types, age bounds, province levels.</li>
+<li><strong>Sample flow</strong> — audit table has ≥ 5 steps, n is monotonically non-increasing, final n &gt; 0.</li>
+</ol>
+<p>Registered as <code>run_r_soft</code> in <code>flow.R</code> — failures warn but do not halt the pipeline.</p>
+</section>
+</section>
+<section id="diagnostic-checkpoints" class="level2">
+<h2 class="anchored" data-anchor-id="diagnostic-checkpoints">Diagnostic Checkpoints</h2>
+<p>After running each lane, verify:</p>
+<p><strong>After Lane 0</strong>:</p>
+<ul>
+<li>Open <code>codebook-research-vars-check.csv</code> — all 50 research variables should show status <code>BOTH</code>.</li>
+<li>Check for any <code>WARNING</code> in the console about variables missing from one cycle.</li>
+</ul>
+<p><strong>After Lane 1</strong>:</p>
+<ul>
+<li>Query the staging SQLite and confirm both tables are present with expected row counts (~62,909 for 2010, ~63,522 for 2014).</li>
+</ul>
+<p><strong>After Lane 2</strong>:</p>
+<ul>
+<li>Check the <code>sample_flow</code> table against the reference in the CACHE Manifest.</li>
+<li>Verify final analytic n ≈ 64,141 (prior analysis reference); observed n = 63,843 (−298).</li>
+<li>If n deviates &gt; 5,000, review the exclusion logic and CCHS code mappings.</li>
+<li>Check the outcome mean ≈ 1.35 and zero proportion ≈ 71%; observed: mean = 1.35, zero% = 70.5%.</li>
+<li>Verify <code>immigration_status</code> non-NA n &gt; 50,000 (non-immigrants now captured via SDCFIMM).</li>
+</ul>
+<p><strong>After Lane 3</strong>:</p>
+<ul>
+<li>All 24 tests should PASS.</li>
+<li>If any parity test fails, re-run Lane 2; if data quality tests fail, review the recode blocks in <code>2-ellis.R</code>.</li>
+<li>Baseline run (2026-05-20): 24 PASSED, 0 FAILED.</li>
+</ul>
+</section>
+<section id="common-issues" class="level2">
+<h2 class="anchored" data-anchor-id="common-issues">Common Issues</h2>
+<p><strong><code>immigration_status</code> nearly all NA (&gt; 85%)</strong>: SDCFIMM is absent from <code>vars_inferred</code> or was dropped. Confirm <code>sdcfimm</code> and <code>sdcgres</code> both survived the white-list step. The <code>case_when</code> logic now uses <code>sdcfimm == 2</code> to identify non-immigrants — the old <code>sdcgres == 6</code> branch never fires because SPSS stores code 6 as system missing, which becomes NA after <code>haven::zap_labels()</code>.</p>
+<p><strong><code>DOLOP</code> not found</strong>: The LOP module inclusion flag is absent — the <code>.sav</code> file does not contain the LOP module. Confirm you are using the correct CCHS file; the 2010 file is named <code>CCHS2010_LOP.sav</code> specifically because it includes the LOP module.</p>
+<p><strong><code>ACC_50A</code> missing from 2014</strong> (or vice versa): Expected — the alias resolution block in <code>2-ellis.R</code> handles this. If the white-list check still fails, verify that <code>janitor::clean_names()</code> produced the expected lowercase name.</p>
+<p><strong>Final n &lt;&lt; 64,141</strong>: Likely over-aggressive NA removal. Check the special-code mapping in the exclusion steps. CCHS uses codes 6/7/8/9 for some variables and 96/97/98/99 for others — confirm per codebook.</p>
+<p><strong>Zero proportion &gt;&gt; 75%</strong>: Check that the LOP component variables (<code>LOPG040</code>, <code>LOPG070</code>, …) are properly read as numeric, not as character or factor.</p>
+</section>
+<section id="cross-cycle-harmonization-reference" class="level2">
+<h2 class="anchored" data-anchor-id="cross-cycle-harmonization-reference">Cross-Cycle Harmonization Reference</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Construct</th>
+<th>2010 variable</th>
+<th>2014 variable</th>
+<th>Harmonized name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Has regular family doctor</td>
+<td><code>ACC_50A</code></td>
+<td><code>HCU_1AA</code></td>
+<td><code>hcu_1aa_h</code></td>
+</tr>
+<tr class="even">
+<td>Country of birth</td>
+<td><code>SDCGCBG</code></td>
+<td><code>SDCGCB13</code></td>
+<td><code>sdcgcbg_h</code></td>
+</tr>
+</tbody>
+</table>
+<p>All other research variables use identical names in both cycles.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><em>Absent from Chronic</em> | Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval | 2026</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Absent from Chronic - CCHS Pipeline — INPUT Manifest</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Absent from Chronic</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../../content/project/project-proposal.html" rel="" target="">
+ <span class="dropdown-text">Project Proposal</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pipeline" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Pipeline</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pipeline">    
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/pipeline-guide.html" rel="" target="">
+ <span class="dropdown-text">Pipeline Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/cache-manifest.html" rel="" target="">
+ <span class="dropdown-text">CACHE Manifest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/pipeline/input-manifest.html" rel="" target="">
+ <span class="dropdown-text">INPUT Manifest</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-primer" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Data Primer</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-primer">    
+        <li>
+    <a class="dropdown-item" href="../../content/data-primer/variable-inclusion.html" rel="" target="">
+ <span class="dropdown-text">Variable Inclusion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/data-primer/univariate-distributions.html" rel="" target="">
+ <span class="dropdown-text">Univariate Distributions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/outcome.html" rel="" target="">
+ <span class="dropdown-text">Outcome (LOP Day Decomposition)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/outcome-distribution.html" rel="" target="">
+ <span class="dropdown-text">Outcome (Distribution Shapes)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/exposure.html" rel="" target="">
+ <span class="dropdown-text">Exposure (Chronic Conditions)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/predisposing.html" rel="" target="">
+ <span class="dropdown-text">Predisposing (Socio-demographic)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/facilitating.html" rel="" target="">
+ <span class="dropdown-text">Facilitating (Health System &amp; Behaviours)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/needs.html" rel="" target="">
+ <span class="dropdown-text">Needs (Perceived Health &amp; Limitations)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/analysis/missingness.html" rel="" target="">
+ <span class="dropdown-text">Missingness</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/site-map.html" rel="" target="">
+ <span class="menu-text">Site Map</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#raw-input-summary" id="toc-raw-input-summary" class="nav-link active" data-scroll-target="#raw-input-summary">Raw Input Summary</a></li>
+  <li><a href="#companion-documentation" id="toc-companion-documentation" class="nav-link" data-scroll-target="#companion-documentation">Companion Documentation</a></li>
+  <li><a href="#modules-required" id="toc-modules-required" class="nav-link" data-scroll-target="#modules-required">Modules Required</a></li>
+  <li><a href="#known-cross-cycle-variable-name-differences" id="toc-known-cross-cycle-variable-name-differences" class="nav-link" data-scroll-target="#known-cross-cycle-variable-name-differences">Known Cross-Cycle Variable Name Differences</a></li>
+  <li><a href="#cross-variable-dependencies" id="toc-cross-variable-dependencies" class="nav-link" data-scroll-target="#cross-variable-dependencies">Cross-Variable Dependencies</a></li>
+  <li><a href="#survey-design-notes" id="toc-survey-design-notes" class="nav-link" data-scroll-target="#survey-design-notes">Survey Design Notes</a></li>
+  <li><a href="#analytic-scope" id="toc-analytic-scope" class="nav-link" data-scroll-target="#analytic-scope">Analytic Scope</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CCHS Pipeline — INPUT Manifest</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This document describes the raw input data for the CCHS absenteeism pipeline. It covers two SPSS PUMF files received from Statistics Canada and serves as the reference for <code>1-ferry.R</code> (transport) and <code>0-extract-metadata.R</code> (labelling).</p>
+<section id="raw-input-summary" class="level2">
+<h2 class="anchored" data-anchor-id="raw-input-summary">Raw Input Summary</h2>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 41%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>CCHS 2010-2011</th>
+<th>CCHS 2013-2014</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>File name</td>
+<td><code>CCHS2010_LOP.sav</code></td>
+<td><code>CCHS_2014_EN_PUMF.sav</code></td>
+</tr>
+<tr class="even">
+<td>Format</td>
+<td>SPSS <code>.sav</code> (labelled)</td>
+<td>SPSS <code>.sav</code> (labelled)</td>
+</tr>
+<tr class="odd">
+<td>Received date</td>
+<td>2026-02-19</td>
+<td>2026-02-19</td>
+</tr>
+<tr class="even">
+<td>Path (config key)</td>
+<td><code>raw_data.cchs_2010</code></td>
+<td><code>raw_data.cchs_2014</code></td>
+</tr>
+<tr class="odd">
+<td>Survey cycle</td>
+<td>Annual component 2010-2011</td>
+<td>Annual component 2013-2014</td>
+</tr>
+<tr class="even">
+<td>Source</td>
+<td>Statistics Canada DLI / PUMF</td>
+<td>Statistics Canada DLI / PUMF</td>
+</tr>
+<tr class="odd">
+<td>Respondents (raw)</td>
+<td>~62,909</td>
+<td>~63,522</td>
+</tr>
+<tr class="even">
+<td>Variables</td>
+<td>~600+</td>
+<td>~600+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="companion-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="companion-documentation">Companion Documentation</h2>
+<p>PDF documentation files (converted to <code>.txt</code> by <code>manipulation/0-extract-dictionary/0-extract-dictionary.py</code>):</p>
+<table class="table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Derived text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CCHS_2010_DataDictionary_Freqs-ver2.pdf</code></td>
+<td><code>CCHS_2010_DataDictionary_Freqs-ver2.txt</code></td>
+</tr>
+<tr class="even">
+<td><code>CCHS_2014_DataDictionary_Freqs.pdf</code></td>
+<td><code>CCHS_2014_DataDictionary_Freqs.txt</code></td>
+</tr>
+<tr class="odd">
+<td><code>CCHS_2010_Record_Layout.pdf</code></td>
+<td><code>CCHS_2010_Record_Layout.txt</code></td>
+</tr>
+<tr class="even">
+<td><code>CCHS_2014_Record_Layout.pdf</code></td>
+<td><code>CCHS_2014_Record_Layout.txt</code></td>
+</tr>
+<tr class="odd">
+<td><code>CCHS_2010_Derived_Variables.pdf</code></td>
+<td><code>CCHS_2010_Derived_Variables.txt</code></td>
+</tr>
+<tr class="even">
+<td><code>CCHS_2014_Derived_Variables.pdf</code></td>
+<td><code>CCHS_2014_Derived_Variables.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p>Extracted CSVs produced by <code>0-extract-metadata.R</code> and written to the derived data directory:</p>
+<ul>
+<li><code>codebook-variable-labels.csv</code> — variable name + label for both cycles</li>
+<li><code>codebook-value-labels.csv</code> — value codes + labels for all labelled variables</li>
+<li><code>codebook-cycle-comparison.csv</code> — variable-by-variable cross-cycle presence check</li>
+<li><code>codebook-research-vars-check.csv</code> — spot-check of all research variables</li>
+</ul>
+</section>
+<section id="modules-required" class="level2">
+<h2 class="anchored" data-anchor-id="modules-required">Modules Required</h2>
+<p>Both cycles include the following modules essential to this study:</p>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Prefix</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Loss of Productivity (LOP)</td>
+<td><code>LOP_</code>, <code>LOPG</code></td>
+<td>Outcome: days absent from work</td>
+</tr>
+<tr class="even">
+<td>Chronic Conditions (CCC)</td>
+<td><code>CCC_</code></td>
+<td>Primary exposure: 19 chronic conditions</td>
+</tr>
+<tr class="odd">
+<td>General Health (GEN)</td>
+<td><code>GEN_</code></td>
+<td>Self-perceived health (needs domain)</td>
+</tr>
+<tr class="even">
+<td>Demographics (DHH)</td>
+<td><code>DHH</code>, <code>DHHG</code></td>
+<td>Age, sex, household (predisposing)</td>
+</tr>
+<tr class="odd">
+<td>Sociodemographics (SDC)</td>
+<td><code>SDCG</code></td>
+<td>Immigration, ethnicity (predisposing)</td>
+</tr>
+<tr class="even">
+<td>Income (INC)</td>
+<td><code>INCG</code></td>
+<td>Household income (facilitating)</td>
+</tr>
+<tr class="odd">
+<td>Education (EDU)</td>
+<td><code>EDUD</code></td>
+<td>Education level (predisposing)</td>
+</tr>
+<tr class="even">
+<td>Health behaviours</td>
+<td><code>HWT</code>, <code>ALC</code>, <code>SMKG</code>, <code>PACD</code>, <code>FVCG</code></td>
+<td>BMI, alcohol, smoking, activity, diet</td>
+</tr>
+<tr class="odd">
+<td>Activities of Daily Living (ADL)</td>
+<td><code>ADL_</code></td>
+<td>Functional limitations (needs domain)</td>
+</tr>
+<tr class="even">
+<td>Health Care Utilization (HCU)</td>
+<td><code>HCU_</code></td>
+<td>Regular medical doctor (facilitating)</td>
+</tr>
+<tr class="odd">
+<td>Labour Force (LBS)</td>
+<td><code>LBSD</code></td>
+<td>Full/part-time status (facilitating)</td>
+</tr>
+<tr class="even">
+<td>Survey design</td>
+<td><code>WTS_M</code>, <code>ADM_PRX</code></td>
+<td>Master weight, proxy indicator</td>
+</tr>
+</tbody>
+</table>
+<p>LOP module inclusion is confirmed via the flag variable <code>DOLOP</code> (both cycles).</p>
+</section>
+<section id="known-cross-cycle-variable-name-differences" class="level2">
+<h2 class="anchored" data-anchor-id="known-cross-cycle-variable-name-differences">Known Cross-Cycle Variable Name Differences</h2>
+<p>The following variables require alias resolution in <code>2-ellis.R</code>:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Construct</th>
+<th>CCHS 2010 name</th>
+<th>CCHS 2014 name</th>
+<th>Harmonized name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Has regular family doctor</td>
+<td><code>ACC_50A</code></td>
+<td><code>HCU_1AA</code></td>
+<td><code>hcu_1aa_h</code></td>
+</tr>
+<tr class="even">
+<td>Country of birth (grouped)</td>
+<td><code>SDCGCBG</code></td>
+<td><code>SDCGCB13</code></td>
+<td><code>sdcgcbg_h</code></td>
+</tr>
+</tbody>
+</table>
+<p>All other white-listed research variables use identical names in both cycles (confirmed by <code>0-extract-metadata.R</code> spot-check).</p>
+</section>
+<section id="cross-variable-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="cross-variable-dependencies">Cross-Variable Dependencies</h2>
+<p><code>immigration_status</code> in <code>2-ellis.R</code> requires <strong>both</strong> <code>SDCFIMM</code> and <code>SDCGRES</code>:</p>
+<table class="table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 42%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Codes used</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>SDCFIMM</code> (Immigrant flag)</td>
+<td>1=YES, 2=NO</td>
+<td>Identifies non-immigrants (SDCGRES=6 is stored as SPSS system missing → NA after Ferry)</td>
+</tr>
+<tr class="even">
+<td><code>SDCGRES</code> (Length in Canada)</td>
+<td>1=0-9 yrs, 2=10+ yrs</td>
+<td>Distinguishes recent from long-term among immigrants</td>
+</tr>
+</tbody>
+</table>
+<p>Both variables are in the <code>vars_inferred</code> (Tier 2) white-list in <code>2-ellis.R</code>.</p>
+</section>
+<section id="survey-design-notes" class="level2">
+<h2 class="anchored" data-anchor-id="survey-design-notes">Survey Design Notes</h2>
+<ul>
+<li><strong>Weights</strong>: Master weight <code>WTS_M</code> is available in both PUMF files.</li>
+<li><strong>Bootstrap weights</strong>: Not available in the PUMF files for these cycles (bootstrap weights for CCHS begin with the 2015 cycle). Variance estimation must use master weight only; complex survey design variables (strata, PSUs) are also not released in PUMF.</li>
+<li><strong>Pooling adjustment</strong>: When combining two annual cycles, each respondent’s master weight is divided by 2 per Statistics Canada guidance (<code>wts_m_pooled = wts_m / 2</code> in <code>2-ellis.R</code>).</li>
+<li><strong>Proxy interviews</strong>: <code>ADM_PRX = 1</code> indicates a proxy respondent and must be excluded from the analytic sample.</li>
+</ul>
+</section>
+<section id="analytic-scope" class="level2">
+<h2 class="anchored" data-anchor-id="analytic-scope">Analytic Scope</h2>
+<ul>
+<li><strong>Population</strong>: Canadian residents aged 15-75 who reported paid employment in the 3 months preceding the survey (LOP module respondents).</li>
+<li><strong>Initial exploration n</strong>: 64,141 (unweighted), pooled from both cycles.</li>
+<li><strong>Study reference</strong>: Blanchette M.-A., Koval O., Koval A. (2026) “Predictors of Work Absenteeism Associated with Chronic Conditions Among Canadian Workers.”</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><em>Absent from Chronic</em> | Marc-Andre Blanchette, Oleksandr Koval, Andriy Koval | 2026</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
