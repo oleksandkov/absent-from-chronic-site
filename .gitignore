@@ -1,4 +1,5 @@
+.vercel
+.vscode
+.quarto
+node_modules/
 _site/
-.quarto/
-
-/.quarto/
