@@ -6,7 +6,7 @@
   QUARTO_PYTHON = "3.11"
   R_VERSION = "4.3"
 
-# Rewrite clean URLs to the nested Quarto output under content/
+# Redirect the hosted root and top-level section paths into the nested Quarto output.
 [[redirects]]
   from = "/"
   to = "/content/index.html"
@@ -35,6 +35,12 @@
 [[redirects]]
   from = "/analysis/*"
   to = "/content/analysis/:splat"
+  status = 200
+
+# Redirect old paths to new ones if needed
+[[redirects]]
+  from = "/redirects/*"
+  to = "/:splat"
   status = 200
 
 # Cache configuration

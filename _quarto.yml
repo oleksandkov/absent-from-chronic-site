@@ -1,8 +1,10 @@
 project:
   type: website
   output-dir: _site
-  # pre-render and post-render R scripts removed for Vercel deployment
-  # (R is not available in Vercel's build environment; images are already in content/images/)
+  pre-render:
+    - scripts/copy-contract-assets.R
+  post-render:
+    - scripts/copy-analysis-html.R
   render:
     - content/index.qmd
     - content/project/project-proposal.qmd
