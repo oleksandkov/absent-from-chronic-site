@@ -130,6 +130,17 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-predictors" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Predictors</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-predictors">    
+        <li>
+    <a class="dropdown-item" href="../content/predictors/predisposing.html" rel="" target="">
+ <span class="dropdown-text">Predisposing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Analysis</span>
     </a>
@@ -232,6 +243,9 @@ ul.task-list li input[type="checkbox"] {
 │   │                                                     (strip embed-resources and theme from YAML)
 │   └── Univariate Distributions             REDIRECT  → analysis/data-primer-1/univariate-distributions.html
 │
+├── Predictors
+│   └── Predisposing                         REDIRECT  → analysis/eda-72/eda-72.html
+│
 ├── Analysis
 │   ├── Outcome (LOP Day Decomposition)      REDIRECT  → analysis/eda-5/eda-5.html
 │   ├── Outcome (Distribution Shapes)        REDIRECT  → analysis/eda-71/eda-71.html
@@ -327,36 +341,41 @@ ul.task-list li input[type="checkbox"] {
 <td>Shows empirical distributions for all 69 variables in the analytic dataset. Supports §4.2 outcome distribution checks, §5.1 missingness assessment, and §5.2 Table 1 preparation.</td>
 </tr>
 <tr class="odd">
+<td><a href="predictors/predisposing.html">Predisposing</a></td>
+<td>§2.2 (predisposing variables), §5.3 (bivariate analysis), §5.4–5.5 (model preparation)</td>
+<td>EDA-72 compares predisposing-variable composition between respondents with No Days and Chronic Days, then profiles chronic-day intensity and exact distributions across predictor levels. It extends the descriptive evidence needed for bivariate comparisons and subsequent count-model specification.</td>
+</tr>
+<tr class="even">
 <td><a href="analysis/outcome.html">Outcome (LOP Day Decomposition)</a></td>
 <td>§4.1–4.2 (outcome construction and checks), §5.2 (Table 1), §5.3 (Table 2 baseline)</td>
 <td>EDA-5: Decomposes the LOP outcome by cause of absence, profiles zero inflation, and examines the chronic condition component separately. Addresses §4.2 distribution diagnostic requirements and establishes the outcome profile needed for Table 1 and Table 2.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="analysis/outcome-distribution.html">Outcome (Distribution Shapes)</a></td>
 <td>§4.2 (distribution checks), §5.4–5.5 (model selection)</td>
 <td>EDA-71: Profiles the shape of the days-absent distribution across chronic vs.&nbsp;non-chronic subgroups using ECDF, density, and benchmark comparisons. Informs the choice of negative binomial vs.&nbsp;Poisson for §5.5 multivariable models.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="analysis/exposure.html">Exposure (Chronic Conditions)</a></td>
 <td>§2.2 (primary exposure), §5.3 (Table 2), §5.7 (Table 4)</td>
 <td>EDA-61: Profiles prevalence and co-occurrence of the 17 PUMF-available chronic conditions. Supports §5.3 bivariate analysis and §5.7 condition-specific model sample size assessment.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="analysis/predisposing.html">Predisposing (Socio-demographic)</a></td>
 <td>§2.2 (predisposing variables), §5.2 (Table 1), §5.3 (Table 2)</td>
 <td>EDA-62: Profiles age, sex, marital status, education, immigration status, visible minority, household size, and related predisposing variables. Directly supports §5.2 Table 1 and §5.3 Table 2 for the predisposing domain.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="analysis/facilitating.html">Facilitating (Health System &amp; Behaviours)</a></td>
 <td>§2.2 (facilitating variables), §5.2 (Table 1), §5.3 (Table 2)</td>
 <td>EDA-63: Profiles income, province, family doctor access, employment type, work schedule, occupation, and health behaviour variables. Directly supports §5.2 Table 1 and §5.3 Table 2 for the facilitating domain.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="analysis/needs.html">Needs (Perceived Health &amp; Limitations)</a></td>
 <td>§2.2 (needs variables), §5.2 (Table 1), §5.3 (Table 2)</td>
 <td>EDA-64: Profiles self-perceived general and mental health, health vs.&nbsp;prior year, functional limitations (ADL items), injury status, and work stress. Directly supports §5.2 Table 1 and §5.3 Table 2 for the needs domain.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="analysis/missingness.html">Missingness</a></td>
 <td>§5.1 (missingness handling)</td>
 <td>EDA-65: Documents the pattern and extent of missing data across all predictor variables. Supports §5.1 decisions on multiple imputation vs.&nbsp;missing-as-category treatment and informs the <code>flag_complete_predictors</code> coverage (59,309/63,843 rows fully complete).</td>
