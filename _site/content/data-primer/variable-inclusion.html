@@ -625,7 +625,10 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p><em>Age (continuous, recoded in 3 categories: 15–24, 25–54, 55–75); sex; marital status; household size; number of children (&lt; 5 yrs, 6–11 yrs, ≥ 12 yrs); education; immigration status; ethnic origin (White vs.&nbsp;visible minority); homeownership; student status | Main questionnaire</em></p>
 </blockquote>
-<p>Age is available in PUMF only as a grouped derived variable (<code>dhhgage</code>); single-year resolution requires restricted RDC access. <code>dhhdfc12p</code> (children ≥ 12 yrs) has no PUMF equivalent. Student status (<code>sdcdgstud</code>) is suppressed in the PUMF and renders all-NA.</p>
+<p>Age is available in PUMF only as a grouped derived variable (<code>dhhgage</code>); single-year resolution requires restricted RDC access. <code>dhhdfc12p</code> (children ≥ 12 yrs) has no PUMF equivalent. Note that <code>dhhgl12</code> — which <em>is</em> present — denotes children <strong>less than</strong> 12 and is a different construct; do not read it as the requested ≥ 12 measure. Student status (<code>sdcdgstud</code>) is suppressed in the PUMF and renders all-NA.</p>
+<blockquote class="blockquote">
+<p><strong>Correction (2026-08-01) — homeownership is available after all.</strong> Revisions of this report dated before 2026-08-01 stated that no house-ownership construct existed in the CCHS PUMF, and treated <code>living_arrangements</code> as a proxy for it. A targeted QC (<code>scripts/qc-home-ownership.R</code>) established that <code>DHH_OWN</code> is present in <strong>both</strong> cycles, uses identical integer coding in both, and covers 99.74% of the analytic table. It is now carried as <code>home_ownership</code> and satisfies the §2.2 requirement directly. <code>living_arrangements</code> is retained on its own merits as a household-composition measure, not as a substitute.</p>
+</blockquote>
 <table class="table">
 <colgroup>
 <col style="width: 28%">
@@ -687,39 +690,53 @@ ul.task-list li input[type="checkbox"] {
 <td>✅ Numeric (0 = none, 1 = one or more); present and populated in both cycles</td>
 </tr>
 <tr class="odd">
+<td>— (not requested; present in PUMF)</td>
+<td><code>dhhgl12</code></td>
+<td><code>dhhgl12</code></td>
+<td><code>dhhgl12</code></td>
+<td>⚠️ Children <strong>&lt; 12 yrs</strong> — numeric (0 = none, 1 = one or more), fully populated (63,843). <strong>Redundant</strong>: <code>dhhgl12 == (dhhgle5 \| dhhg611)</code> in all 63,843 rows, zero discordant cases, so it adds no information beyond the two rows above. Not a substitute for the ≥ 12 yrs row below. See the QC note in the CACHE manifest (2026-08-01)</td>
+</tr>
+<tr class="even">
 <td>Children ≥ 12 yrs in household (count)</td>
 <td>unknown</td>
 <td>unknown</td>
 <td>❌ absent</td>
-<td>❌ White-list used <code>dhhdfc12p</code>; no PUMF equivalent found in either cycle</td>
+<td>❌ White-list used <code>dhhdfc12p</code>; no PUMF equivalent found in either cycle. <strong>Not</strong> satisfied by <code>dhhgl12</code>, which measures the opposite age band</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Education level (4 categories)</td>
 <td><code>edudh04</code></td>
 <td><code>edudh04</code></td>
 <td><code>education</code></td>
 <td>✅ Ordered factor: Less than secondary → Post-secondary graduate. ⚠️ Cross-cycle label discrepancy for code 3 (“Other post-secondary” in 2010 vs “Some post-secondary” in 2014)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Immigration status</td>
 <td><code>sdcfimm</code></td>
 <td><code>sdcfimm</code></td>
 <td><code>immigration_status</code></td>
 <td>✅ Factor: Non-immigrant / Immigrant / Non-permanent resident</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Ethnic origin (White vs.&nbsp;visible minority)</td>
 <td><code>sdcgcgt</code></td>
 <td><code>sdcgcgt</code></td>
 <td><code>visible_minority</code></td>
 <td>✅ Alias <code>sdcdgcb ← sdcgcgt</code> resolves; Factor: White / Visible minority</td>
 </tr>
+<tr class="even">
+<td>Homeownership</td>
+<td><code>dhh_own</code></td>
+<td><code>dhh_own</code></td>
+<td><code>home_ownership</code></td>
+<td>✅ Factor: Owner (50,101) / Renter (13,576); 63,677 non-NA (99.74%). <strong>Correction (2026-08-01)</strong>: earlier revisions of this report stated that no house-ownership construct existed in the CCHS PUMF. That was wrong. <code>DHH_OWN</code> is present in <strong>both</strong> cycles with identical integer coding, and is now included directly. Label text differs across cycles (“Dwelling - owned by a member of hhld” vs “Owned, Rented”) but no alias resolution is needed. Not-stated responses are SPSS system-missing in 2010-2011 and explicit codes 7/8/9 in 2013-2014; both map to <code>NA</code>. Verified by <code>scripts/qc-home-ownership.R</code></td>
+</tr>
 <tr class="odd">
 <td>Living arrangements</td>
 <td><code>dhhglvg</code></td>
 <td><code>dhhglvg</code></td>
 <td><code>living_arrangements</code></td>
-<td>✅ Factor (8 levels): Unattached alone / Unattached with others / Couple no children / Couple with children / Single parent / Child in parent-sibling household / Child in two-parent household / Other. <strong>Note</strong>: The Project Proposal (§2.2) specifies “homeownership” as a predisposing variable; however, no house-ownership construct exists in the CCHS PUMF. <code>living_arrangements</code> (household composition) is included as the closest available proxy, per agreement with M.-A. Blanchette (2026-05-15 review).</td>
+<td>✅ Factor (8 levels): Unattached alone / Unattached with others / Couple no children / Couple with children / Single parent / Child in parent-sibling household / Child in two-parent household / Other. Retained on its own merits as a household-composition measure; it is no longer serving as a homeownership proxy (see the row above)</td>
 </tr>
 <tr class="even">
 <td>Student status</td>
@@ -1045,8 +1062,8 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>Predisposing</td>
 <td>12</td>
-<td>11</td>
-<td>11</td>
+<td>10</td>
+<td>10</td>
 <td>1 (<code>dhhdfc12p</code>) + 1 all-NA (<code>student_status</code>)</td>
 </tr>
 <tr class="odd">
@@ -1072,7 +1089,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><strong>Total:</strong> 69 columns in <code>cchs_analytic</code>. Two chronic condition variables (<code>ccc_300</code>, <code>ccc_185</code>) and one predisposing variable (<code>dhhdfc12p</code>) require RDC access. Student status (<code>student_status</code>) is all-NA due to PUMF suppression of <code>sdcdgstud</code>.</p>
+<p><strong>Total:</strong> 70 columns in <code>cchs_analytic</code>. Two chronic condition variables (<code>ccc_300</code>, <code>ccc_185</code>) and one predisposing variable (<code>dhhdfc12p</code>) require RDC access. Student status (<code>student_status</code>) is all-NA due to PUMF suppression of <code>sdcdgstud</code>.</p>
+<p><strong>Unrequested extras in the predisposing block.</strong> Two columns are carried that §2.2 did not request, which is why the “In Study” count above (10) is lower than the number of predisposing columns actually present:</p>
+<ul>
+<li><code>dhhgl12</code> (any child &lt; 12) — fully populated but redundant, identical to <code>dhhgle5 | dhhg611</code> in all 63,843 rows, and <em>not</em> the missing ≥ 12 yrs construct. It is kept for descriptive and bivariate reporting and withheld from the LASSO.</li>
+<li><code>living_arrangements</code> (8-level household composition) — previously justified as a homeownership proxy, now retained on its own merits.</li>
+</ul>
+<p>The predisposing row of the table counts only the requested constructs, so that the §2.2 checklist can be read without adjustment.</p>
 
 
 </section>

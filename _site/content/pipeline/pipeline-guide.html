@@ -435,12 +435,15 @@ ul.task-list li input[type="checkbox"] {
 <li>If n deviates &gt; 5,000, review the exclusion logic and CCHS code mappings.</li>
 <li>Check the outcome mean ≈ 1.35 and zero proportion ≈ 71%; observed: mean = 1.35, zero% = 70.5%.</li>
 <li>Verify <code>immigration_status</code> non-NA n &gt; 50,000 (non-immigrants now captured via SDCFIMM).</li>
+<li>Verify the final table is 63,843 × <strong>70</strong> (70 columns since <code>home_ownership</code> was admitted on 2026-08-01; it was 69 before).</li>
+<li>Verify <code>home_ownership</code> non-NA n ≈ 63,677 (99.74%). If it is materially lower, the <code>DHH_OWN</code> recode is absorbing the 2013-2014 not-stated codes 7/8/9 or the 2010-2011 system-missing values incorrectly.</li>
 </ul>
 <p><strong>After Lane 3</strong>:</p>
 <ul>
 <li>All 24 tests should PASS.</li>
 <li>If any parity test fails, re-run Lane 2; if data quality tests fail, review the recode blocks in <code>2-ellis.R</code>.</li>
 <li>Baseline run (2026-05-20): 24 PASSED, 0 FAILED.</li>
+<li>Latest run (2026-08-01, after admitting <code>home_ownership</code>): 0 FAILED. Lanes 0-3 all exited 0; final table 63,843 × 70.</li>
 </ul>
 </section>
 <section id="common-issues" class="level2">
@@ -469,15 +472,10 @@ ul.task-list li input[type="checkbox"] {
 <td><code>HCU_1AA</code></td>
 <td><code>hcu_1aa_h</code></td>
 </tr>
-<tr class="even">
-<td>Country of birth</td>
-<td><code>SDCGCBG</code></td>
-<td><code>SDCGCB13</code></td>
-<td><code>sdcgcbg_h</code></td>
-</tr>
 </tbody>
 </table>
 <p>All other research variables use identical names in both cycles.</p>
+<p><code>DHH_OWN</code> is a special case: the name and the integer coding are identical in both cycles, so it needs no alias, but the label text differs (“Dwelling - owned by a member of hhld” vs “Owned, Rented”) and not-stated responses are SPSS system missing in 2010-2011 versus explicit codes 7/8/9 in 2013-2014. The recode maps only <code>1</code> and <code>2</code> and sends everything else to <code>NA</code>. See the INPUT Manifest, section Known Cross-Cycle Encoding Differences.</p>
 
 
 </section>

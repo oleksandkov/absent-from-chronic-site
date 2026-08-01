@@ -218,6 +218,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#companion-documentation" id="toc-companion-documentation" class="nav-link" data-scroll-target="#companion-documentation">Companion Documentation</a></li>
   <li><a href="#modules-required" id="toc-modules-required" class="nav-link" data-scroll-target="#modules-required">Modules Required</a></li>
   <li><a href="#known-cross-cycle-variable-name-differences" id="toc-known-cross-cycle-variable-name-differences" class="nav-link" data-scroll-target="#known-cross-cycle-variable-name-differences">Known Cross-Cycle Variable Name Differences</a></li>
+  <li><a href="#known-cross-cycle-encoding-differences-identical-names" id="toc-known-cross-cycle-encoding-differences-identical-names" class="nav-link" data-scroll-target="#known-cross-cycle-encoding-differences-identical-names">Known Cross-Cycle Encoding Differences (Identical Names)</a></li>
   <li><a href="#cross-variable-dependencies" id="toc-cross-variable-dependencies" class="nav-link" data-scroll-target="#cross-variable-dependencies">Cross-Variable Dependencies</a></li>
   <li><a href="#survey-design-notes" id="toc-survey-design-notes" class="nav-link" data-scroll-target="#survey-design-notes">Survey Design Notes</a></li>
   <li><a href="#analytic-scope" id="toc-analytic-scope" class="nav-link" data-scroll-target="#analytic-scope">Analytic Scope</a></li>
@@ -388,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>Demographics (DHH)</td>
 <td><code>DHH</code>, <code>DHHG</code></td>
-<td>Age, sex, household (predisposing)</td>
+<td>Age, sex, household, home ownership (predisposing)</td>
 </tr>
 <tr class="odd">
 <td>Sociodemographics (SDC)</td>
@@ -462,6 +463,37 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>All other white-listed research variables use identical names in both cycles (confirmed by <code>0-extract-metadata.R</code> spot-check).</p>
+</section>
+<section id="known-cross-cycle-encoding-differences-identical-names" class="level2">
+<h2 class="anchored" data-anchor-id="known-cross-cycle-encoding-differences-identical-names">Known Cross-Cycle Encoding Differences (Identical Names)</h2>
+<p>Some variables share a name across cycles but differ in label text or in how not-stated responses are stored. These need no alias resolution, but they do constrain how <code>2-ellis.R</code> may recode them.</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>2010-2011</th>
+<th>2013-2014</th>
+<th>Consequence for Ellis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DHH_OWN</code></td>
+<td>Label “Dwelling - owned by a member of hhld”; <code>1 = YES</code>, <code>2 = NO</code>; not-stated is <strong>SPSS system missing</strong> (1,475 rows)</td>
+<td>Label “Owned, Rented”; <code>1 = OWNER</code>, <code>2 = RENTED</code>; not-stated is <strong>explicit codes 7 / 8 / 9</strong> (1,809 rows)</td>
+<td>Integer coding is identical, so no alias is needed. The recode must map only <code>1</code> and <code>2</code> and send everything else to <code>NA</code>, so that both missingness representations are caught.</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Verified 2026-08-01</strong> by <code>scripts/qc-home-ownership.R</code>. <code>DHH_OWN</code> is present in both PUMF files, covers 99.74% of the final analytic table, and shows no optional-content aliasing (every province × cycle cell exceeds 99.3%). It satisfies the Project Proposal §2.2 “homeownership” requirement, which earlier documentation incorrectly reported as unavailable in the PUMF.</p>
+</blockquote>
 </section>
 <section id="cross-variable-dependencies" class="level2">
 <h2 class="anchored" data-anchor-id="cross-variable-dependencies">Cross-Variable Dependencies</h2>

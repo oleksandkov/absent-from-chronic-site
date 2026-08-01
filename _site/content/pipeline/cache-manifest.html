@@ -292,7 +292,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Columns</td>
-<td>69</td>
+<td>70</td>
 </tr>
 <tr class="odd">
 <td>Analytic n (unweighted)</td>
@@ -667,34 +667,40 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td><code>dhhgle5</code></td>
 <td><code>DHHGLE5</code></td>
-<td>Count, children ≤ 5 in household</td>
-<td>—</td>
+<td>Binary 0/1 presence flag — any child ≤ 5 in household: 0 (55,089), 1 (8,754)</td>
+<td>63,843</td>
 </tr>
 <tr class="odd">
 <td><code>dhhg611</code></td>
 <td><code>DHHG611</code></td>
-<td>Count, children 6-11</td>
-<td>—</td>
+<td>Binary 0/1 presence flag — any child 6-11 in household: 0 (54,678), 1 (9,165)</td>
+<td>63,843</td>
 </tr>
 <tr class="even">
 <td><code>dhhgl12</code></td>
 <td><code>DHHGL12</code></td>
-<td>Count, children &lt; 12</td>
-<td>—</td>
+<td>Binary 0/1 presence flag — any child <strong>under 12</strong> in household: 0 (49,264), 1 (14,579)</td>
+<td>63,843</td>
 </tr>
 <tr class="odd">
+<td><code>home_ownership</code></td>
+<td><code>DHH_OWN</code></td>
+<td>Owner (50,101), Renter (13,576)</td>
+<td>63,677</td>
+</tr>
+<tr class="even">
 <td><code>education</code></td>
 <td><code>EDUDR04</code></td>
 <td>Less than secondary (7,348), Secondary graduate (11,778), Some post-secondary (4,341), Post-secondary graduate (39,774)</td>
 <td>63,241</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>immigration_status</code></td>
 <td><code>SDCFIMM</code> + <code>SDCGRES</code></td>
 <td>Non-immigrant (55,066), Long-term immigrant (6,317), Recent immigrant (2,092)</td>
 <td>63,475</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>visible_minority</code></td>
 <td><code>SDCGCGT</code></td>
 <td>White (54,105), Visible minority (9,259)</td>
@@ -702,6 +708,17 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<blockquote class="blockquote">
+<p><strong>QC finding (2026-08-01) — the three child-presence flags are not counts, and <code>dhhgl12</code> is redundant:</strong> All three of <code>dhhgle5</code>, <code>dhhg611</code>, and <code>dhhgl12</code> arrive from the PUMF as <strong>binary 0/1 presence indicators</strong>, not as counts of children; earlier revisions of this manifest described them as counts. All three are complete (0 missing across 63,843 rows). Furthermore, <code>dhhgl12</code> is a <strong>deterministic function</strong> of the other two: <code>dhhgl12 == (dhhgle5 | dhhg611)</code> holds for all 63,843 rows with <strong>zero discordant cases</strong>. Its unweighted correlation with <code>dhhgle5</code> is 0.733 and with <code>dhhg611</code> is 0.753. A design matrix built from <code>~ dhhgle5 + dhhg611 + dhhgl12</code> spans exactly the same column space as <code>~ dhhgle5 * dhhg611</code> (max residual 1.3e-10), so <code>dhhgl12</code> carries no main-effect information beyond its two components — it merely re-expresses their interaction. Do not read a coefficient on <code>dhhgl12</code> as an independent “young children” effect when the other two flags are in the same model.</p>
+<p><strong>Naming caution:</strong> <code>DHHGL12</code> means children <strong>less than</strong> 12 years old. It is <em>not</em> the requested “children ≥ 12 yrs” construct (<code>dhhdfc12p</code>), which has no PUMF equivalent in either cycle. See §4 of the Variable Inclusion report.</p>
+<p><strong>Analytic disposition (ratified 2026-08-01):</strong> <code>dhhgl12</code> is retained for descriptive reporting and for the Section 5.3 bivariate series, where its rate ratio is a legitimate marginal quantity, but it is <strong>withheld from the Section 5.4 penalised selection</strong>. Penalised selection among deterministically redundant columns splits a shared coefficient arbitrarily between them. The split is implemented in <code>scripts/modeling/candidate-registry.R</code> via <code>bivariate_only_vars</code>; <code>included_vars</code> (49) drives descriptives and bivariate models, <code>lasso_vars</code> (48) drives LASSO.</p>
+</blockquote>
+<!-- -->
+<blockquote class="blockquote">
+<p><strong>New variable (2026-08-01) — <code>home_ownership</code> admitted:</strong> <code>DHH_OWN</code> is present in <strong>both</strong> cycles and satisfies the Project Proposal §2.2 “homeownership” requirement directly. Earlier revisions of the Variable Inclusion report stated that no house-ownership construct existed in the CCHS PUMF; that claim was wrong and has been retracted. The variable label text differs across cycles (2010-2011: “Dwelling - owned by a member of hhld”, <code>1 = YES</code> / <code>2 = NO</code>; 2013-2014: “Owned, Rented”, <code>1 = OWNER</code> / <code>2 = RENTED</code>) but the <strong>integer coding is identical</strong>, so no alias resolution is required.</p>
+<p><strong>Missingness is represented differently by cycle</strong> and the Ellis recode must catch both forms: 2010-2011 stores refusal / not-stated as SPSS <strong>system missing</strong> (→ <code>NA</code> after <code>haven::zap_labels()</code> in the Ferry), whereas 2013-2014 stores them as <strong>explicit codes 7 / 8 / 9</strong>. The recode therefore maps <code>1 → Owner</code>, <code>2 → Renter</code>, and everything else → <code>NA</code>; it must not be simplified to <code>dhh_own != 1 ~ "Renter"</code>, which would silently absorb the not-stated codes into the Renter category. Coverage in the final analytic table is <strong>99.74%</strong> (63,677 of 63,843; 68 missing in 2010-2011, 98 in 2013-2014). No optional-content aliasing was detected — every province × cycle cell exceeds 99.3% coverage.</p>
+</blockquote>
+<!-- -->
 <blockquote class="blockquote">
 <p><strong>Fix applied (2026-05-20) — <code>immigration_status</code> construction:</strong> SPSS stores SDCGRES code 6 (“NOT APPLICABLE” = Canadian-born) as <strong>system missing</strong>, which becomes <code>NA</code> after <code>haven::zap_labels()</code> in the Ferry. The previous recode <code>sdcgres == 6 ~ "Non-immigrant"</code> therefore never fired, leaving ~86% of analytic rows as NA. The fix uses <code>SDCFIMM == 2</code> (NO, not an immigrant) to identify non-immigrants, resolving near-complete coverage. <code>SDCFIMM</code> was added to <code>vars_inferred</code> and is retained as raw column <code>sdcfimm</code> in the output.</p>
 </blockquote>
@@ -963,6 +980,8 @@ ul.task-list li input[type="checkbox"] {
 <li>ADL limitation columns (<code>adl_meals</code>, <code>adl_errands</code>, <code>adl_housework</code>, <code>adl_personal_care</code>, <code>adl_moving_indoors</code>, <code>adl_finances</code>) are “No”/“Yes” factors. Prevalence of “Yes” is very low (~0.8%) in this employed sample.</li>
 <li><code>smoking_status</code> collapses SMKDSTY’s 6 codes to 4 groups: Daily, Occasional (codes 2+3), Former (codes 4+5), Never smoked.</li>
 <li><code>occupation_category</code> uses 2010 descriptive labels for both cycles; 2014 PUMF labels the same 5 groups only as “GROUP 1”–“GROUP 5”.</li>
+<li><code>home_ownership</code> (source: <code>DHH_OWN</code>) is a two-level factor, Owner / Renter. “Renter” means “not owned by a member of the household” and therefore also covers band housing and rent-free arrangements; it is not a tenure-type breakdown. Not-stated responses are <code>NA</code> in both cycles despite being encoded differently upstream — see the QC note in the Predisposing section.</li>
+<li>The three child-presence flags (<code>dhhgle5</code>, <code>dhhg611</code>, <code>dhhgl12</code>) are numeric 0/1, not factors, and not counts. <code>dhhgl12</code> is the logical OR of the other two; do not enter all three into a penalised model. See the QC note above.</li>
 <li>The 17 <code>cc_*</code> columns are logical. Use <code>as.integer(cc_*)</code> to get 0/1 for regression models.</li>
 <li>Always use <code>wts_m_pooled</code> (not <code>wts_m</code>) for weighted analyses.</li>
 <li>No bootstrap weights are available; report confidence intervals from survey design-based variance or note this limitation in publications.</li>

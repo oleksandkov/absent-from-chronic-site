@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Analysis Team">
-<meta name="dcterms.date" content="2026-05-23">
+<meta name="dcterms.date" content="2026-08-01">
 
 <title>CCHS Analytic Dataset: Univariate Distributions</title>
 <style>
@@ -3077,7 +3077,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 23, 2026</p>
+      <p class="date">August 1, 2026</p>
     </div>
   </div>
   
@@ -3091,7 +3091,7 @@ vertical-align: -.125em;
 <h1>Mission</h1>
 <p>This document provides a complete univariate profile of every variable in the <code>cchs_analytic</code> analysis-ready table produced by <code>manipulation/2-ellis.R</code>. It serves as the <strong>canonical data reference</strong> for all EDAs and Reports in this project.</p>
 <p><strong>Dataset:</strong> CCHS 2010 + 2014 pooled analytic sample<br>
-<strong>Rows:</strong> 63,843 respondents <strong>Cols:</strong> 69 variables<br>
+<strong>Rows:</strong> 63,843 respondents <strong>Cols:</strong> 70 variables<br>
 <strong>Source:</strong> <code>data-private/derived/cchs-2-tables/cchs_analytic.parquet</code><br>
 <strong>Pipeline documentation:</strong> <code>data-public/metadata/CACHE-manifest.md</code><br>
 <strong>Variable traceability:</strong> <a href="variable-inclusion.html">Variable Inclusion</a></p>
@@ -3237,7 +3237,7 @@ vertical-align: -.125em;
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Parquet loaded: &quot;</span>, <span class="fu">nrow</span>(ds0), <span class="st">&quot;rows x&quot;</span>, <span class="fu">ncol</span>(ds0), <span class="st">&quot;cols</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parquet loaded:  63843 rows x 69 cols</code></pre>
+<pre><code>Parquet loaded:  63843 rows x 70 cols</code></pre>
 </div>
 </div>
 <hr>
@@ -4271,60 +4271,64 @@ Anxiety disorder (phobia / OCD / panic)
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pred_discrete_vars <span class="ot">&lt;-</span> <span class="fu">intersect</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;age_group_3&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;marital_status&quot;</span>, <span class="st">&quot;household_size&quot;</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;education&quot;</span>, <span class="st">&quot;immigration_status&quot;</span>, <span class="st">&quot;visible_minority&quot;</span>, <span class="st">&quot;living_arrangements&quot;</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(ds0)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>t_pred_freq <span class="ot">&lt;-</span> <span class="fu">lapply</span>(pred_discrete_vars, <span class="cf">function</span>(v) <span class="fu">summarize_discrete</span>(ds0, v))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(t_pred_freq) <span class="ot">&lt;-</span> pred_discrete_vars</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw PUMF age group code — treated as ordered factor for frequency table</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;dhhgage&quot;</span> <span class="sc">%in%</span> <span class="fu">names</span>(ds0)) {</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  dhhgage_levels <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">na.omit</span>(ds0[[<span class="st">&quot;dhhgage&quot;</span>]])))</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  dhhgage_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(ds0[[<span class="st">&quot;dhhgage&quot;</span>]], <span class="at">levels =</span> dhhgage_levels)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  tmp_freq <span class="ot">&lt;-</span> <span class="fu">summarize_discrete</span>(<span class="fu">data.frame</span>(<span class="at">dhhgage =</span> dhhgage_factor), <span class="st">&quot;dhhgage&quot;</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  dhhgage_brackets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;2&quot;</span>  <span class="ot">=</span> <span class="st">&quot;15\u201317 yrs&quot;</span>, <span class="st">&quot;3&quot;</span>  <span class="ot">=</span> <span class="st">&quot;18\u201319 yrs&quot;</span>, <span class="st">&quot;4&quot;</span>  <span class="ot">=</span> <span class="st">&quot;20\u201324 yrs&quot;</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;5&quot;</span>  <span class="ot">=</span> <span class="st">&quot;25\u201329 yrs&quot;</span>, <span class="st">&quot;6&quot;</span>  <span class="ot">=</span> <span class="st">&quot;30\u201334 yrs&quot;</span>, <span class="st">&quot;7&quot;</span>  <span class="ot">=</span> <span class="st">&quot;35\u201339 yrs&quot;</span>,</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;8&quot;</span>  <span class="ot">=</span> <span class="st">&quot;40\u201344 yrs&quot;</span>, <span class="st">&quot;9&quot;</span>  <span class="ot">=</span> <span class="st">&quot;45\u201349 yrs&quot;</span>, <span class="st">&quot;10&quot;</span> <span class="ot">=</span> <span class="st">&quot;50\u201354 yrs&quot;</span>,</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;11&quot;</span> <span class="ot">=</span> <span class="st">&quot;55\u201359 yrs&quot;</span>, <span class="st">&quot;12&quot;</span> <span class="ot">=</span> <span class="st">&quot;60\u201364 yrs&quot;</span>, <span class="st">&quot;13&quot;</span> <span class="ot">=</span> <span class="st">&quot;65\u201369 yrs&quot;</span>,</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;14&quot;</span> <span class="ot">=</span> <span class="st">&quot;70\u201374 yrs&quot;</span>, <span class="st">&quot;15&quot;</span> <span class="ot">=</span> <span class="st">&quot;75\u201379 yrs&quot;</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  t_dhhgage_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">code    =</span> tmp_freq<span class="sc">$</span>value,</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">bracket =</span> dhhgage_brackets[<span class="fu">as.character</span>(tmp_freq<span class="sc">$</span>value)],</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> tmp_freq<span class="sc">$</span>n,</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct     =</span> tmp_freq<span class="sc">$</span>pct,</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  t_dhhgage_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">code =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">bracket =</span> <span class="fu">character</span>(<span class="dv">0</span>),</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                                <span class="at">n =</span> <span class="fu">integer</span>(<span class="dv">0</span>), <span class="at">pct =</span> <span class="fu">numeric</span>(<span class="dv">0</span>),</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Children in household by age band — treated as ordered factors for frequency tables</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>make_count_freq <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, var) {</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>var <span class="sc">%in%</span> <span class="fu">names</span>(ds)) <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  vals   <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">na.omit</span>(ds[[var]])))</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  f      <span class="ot">&lt;-</span> <span class="fu">factor</span>(ds[[var]], <span class="at">levels =</span> vals)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_discrete</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> f), <span class="st">&quot;x&quot;</span>)</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>t_children_le5  <span class="ot">&lt;-</span> <span class="fu">make_count_freq</span>(ds0, <span class="st">&quot;dhhgle5&quot;</span>)</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>t_children_6_11 <span class="ot">&lt;-</span> <span class="fu">make_count_freq</span>(ds0, <span class="st">&quot;dhhg611&quot;</span>)</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co"># student_status: suppressed in PUMF; create all-NA stub for QMD guard</span></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;student_status&quot;</span> <span class="sc">%in%</span> <span class="fu">names</span>(ds0)) {</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>  t_student_status <span class="ot">&lt;-</span> <span class="fu">summarize_discrete</span>(ds0, <span class="st">&quot;student_status&quot;</span>)</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>  t_student_status <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">n =</span> <span class="fu">integer</span>(<span class="dv">0</span>), <span class="at">pct =</span> <span class="fu">numeric</span>(<span class="dv">0</span>),</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(t_student_status, <span class="st">&quot;n_miss&quot;</span>)  <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ds0)</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(t_student_status, <span class="st">&quot;n_valid&quot;</span>) <span class="ot">&lt;-</span> 0L</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;education&quot;</span>, <span class="st">&quot;immigration_status&quot;</span>, <span class="st">&quot;visible_minority&quot;</span>, <span class="st">&quot;home_ownership&quot;</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;living_arrangements&quot;</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(ds0)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>t_pred_freq <span class="ot">&lt;-</span> <span class="fu">lapply</span>(pred_discrete_vars, <span class="cf">function</span>(v) <span class="fu">summarize_discrete</span>(ds0, v))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(t_pred_freq) <span class="ot">&lt;-</span> pred_discrete_vars</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw PUMF age group code — treated as ordered factor for frequency table</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;dhhgage&quot;</span> <span class="sc">%in%</span> <span class="fu">names</span>(ds0)) {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  dhhgage_levels <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">na.omit</span>(ds0[[<span class="st">&quot;dhhgage&quot;</span>]])))</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  dhhgage_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(ds0[[<span class="st">&quot;dhhgage&quot;</span>]], <span class="at">levels =</span> dhhgage_levels)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  tmp_freq <span class="ot">&lt;-</span> <span class="fu">summarize_discrete</span>(<span class="fu">data.frame</span>(<span class="at">dhhgage =</span> dhhgage_factor), <span class="st">&quot;dhhgage&quot;</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  dhhgage_brackets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;2&quot;</span>  <span class="ot">=</span> <span class="st">&quot;15\u201317 yrs&quot;</span>, <span class="st">&quot;3&quot;</span>  <span class="ot">=</span> <span class="st">&quot;18\u201319 yrs&quot;</span>, <span class="st">&quot;4&quot;</span>  <span class="ot">=</span> <span class="st">&quot;20\u201324 yrs&quot;</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;5&quot;</span>  <span class="ot">=</span> <span class="st">&quot;25\u201329 yrs&quot;</span>, <span class="st">&quot;6&quot;</span>  <span class="ot">=</span> <span class="st">&quot;30\u201334 yrs&quot;</span>, <span class="st">&quot;7&quot;</span>  <span class="ot">=</span> <span class="st">&quot;35\u201339 yrs&quot;</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;8&quot;</span>  <span class="ot">=</span> <span class="st">&quot;40\u201344 yrs&quot;</span>, <span class="st">&quot;9&quot;</span>  <span class="ot">=</span> <span class="st">&quot;45\u201349 yrs&quot;</span>, <span class="st">&quot;10&quot;</span> <span class="ot">=</span> <span class="st">&quot;50\u201354 yrs&quot;</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;11&quot;</span> <span class="ot">=</span> <span class="st">&quot;55\u201359 yrs&quot;</span>, <span class="st">&quot;12&quot;</span> <span class="ot">=</span> <span class="st">&quot;60\u201364 yrs&quot;</span>, <span class="st">&quot;13&quot;</span> <span class="ot">=</span> <span class="st">&quot;65\u201369 yrs&quot;</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;14&quot;</span> <span class="ot">=</span> <span class="st">&quot;70\u201374 yrs&quot;</span>, <span class="st">&quot;15&quot;</span> <span class="ot">=</span> <span class="st">&quot;75\u201379 yrs&quot;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  t_dhhgage_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">code    =</span> tmp_freq<span class="sc">$</span>value,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">bracket =</span> dhhgage_brackets[<span class="fu">as.character</span>(tmp_freq<span class="sc">$</span>value)],</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> tmp_freq<span class="sc">$</span>n,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct     =</span> tmp_freq<span class="sc">$</span>pct,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  t_dhhgage_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">code =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">bracket =</span> <span class="fu">character</span>(<span class="dv">0</span>),</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                                <span class="at">n =</span> <span class="fu">integer</span>(<span class="dv">0</span>), <span class="at">pct =</span> <span class="fu">numeric</span>(<span class="dv">0</span>),</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Children in household by age band. Despite the &quot;count&quot; naming inherited from</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co"># the PUMF documentation, DHHGLE5 / DHHG611 / DHHGL12 are BINARY 0/1 presence</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># flags (0 = none, 1 = one or more). Treated as ordered factors here.</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>make_count_freq <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, var) {</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>var <span class="sc">%in%</span> <span class="fu">names</span>(ds)) <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>  vals   <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">na.omit</span>(ds[[var]])))</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>  f      <span class="ot">&lt;-</span> <span class="fu">factor</span>(ds[[var]], <span class="at">levels =</span> vals)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_discrete</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> f), <span class="st">&quot;x&quot;</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>t_children_le5  <span class="ot">&lt;-</span> <span class="fu">make_count_freq</span>(ds0, <span class="st">&quot;dhhgle5&quot;</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>t_children_6_11 <span class="ot">&lt;-</span> <span class="fu">make_count_freq</span>(ds0, <span class="st">&quot;dhhg611&quot;</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>t_children_l12  <span class="ot">&lt;-</span> <span class="fu">make_count_freq</span>(ds0, <span class="st">&quot;dhhgl12&quot;</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="co"># student_status: suppressed in PUMF; create all-NA stub for QMD guard</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;student_status&quot;</span> <span class="sc">%in%</span> <span class="fu">names</span>(ds0)) {</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>  t_student_status <span class="ot">&lt;-</span> <span class="fu">summarize_discrete</span>(ds0, <span class="st">&quot;student_status&quot;</span>)</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>  t_student_status <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">n =</span> <span class="fu">integer</span>(<span class="dv">0</span>), <span class="at">pct =</span> <span class="fu">numeric</span>(<span class="dv">0</span>),</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(t_student_status, <span class="st">&quot;n_miss&quot;</span>)  <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ds0)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(t_student_status, <span class="st">&quot;n_valid&quot;</span>) <span class="ot">&lt;-</span> 0L</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>Age Group</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href>Sex</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href>Marital Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href>Household Size</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href>Education</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href>Immigration Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false" href>Visible Minority</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false" href>Living Arrangements</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-9-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-9" role="tab" aria-controls="tabset-1-9" aria-selected="false" href>Student Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-10-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-10" role="tab" aria-controls="tabset-1-10" aria-selected="false" href>Raw Age Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-11-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-11" role="tab" aria-controls="tabset-1-11" aria-selected="false" href>Children in Household</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>Age Group</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href>Sex</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href>Marital Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href>Household Size</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href>Education</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href>Immigration Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false" href>Visible Minority</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false" href>Home Ownership</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-9-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-9" role="tab" aria-controls="tabset-1-9" aria-selected="false" href>Living Arrangements</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-10-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-10" role="tab" aria-controls="tabset-1-10" aria-selected="false" href>Student Status</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-11-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-11" role="tab" aria-controls="tabset-1-11" aria-selected="false" href>Raw Age Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-12-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-12" role="tab" aria-controls="tabset-1-12" aria-selected="false" href>Children in Household</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 
@@ -4751,6 +4755,65 @@ Visible minority
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
+home_ownership — Dwelling owned by a member of the household
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Home ownership
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+% (of valid)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Owner
+</td>
+<td style="text-align:right;">
+50101
+</td>
+<td style="text-align:right;">
+78.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Renter
+</td>
+<td style="text-align:right;">
+13576
+</td>
+<td style="text-align:right;">
+21.3
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>home_ownership</code> derives from <code>DHH_OWN</code>, which is present in both cycles. “Renter” means “not owned by a member of the household” and therefore also covers band housing and rent-free arrangements; it is not a tenure-type breakdown. Not-stated responses are SPSS system-missing in 2010-2011 but explicit codes 7/8/9 in 2013-2014; both are mapped to <code>NA</code> by the Ellis recode.</p>
+</div>
+</div>
+</div>
+<div id="tabset-1-9" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-9-tab">
+
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
 living_arrangements — 8-level household arrangement factor
 </caption>
 <thead>
@@ -4859,10 +4922,10 @@ Other arrangement
 
 </table>
 </div>
-<div id="tabset-1-9" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-9-tab">
+<div id="tabset-1-10" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-10-tab">
 <p><strong>All-NA variable.</strong> <code>student_status</code> is all-missing. <code>sdcdgstud</code> is suppressed in the CCHS PUMF; requires RDC access.</p>
 </div>
-<div id="tabset-1-10" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-10-tab">
+<div id="tabset-1-11" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-11-tab">
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -5085,16 +5148,16 @@ N
 
 </table>
 </div>
-<div id="tabset-1-11" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-11-tab">
+<div id="tabset-1-12" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-12-tab">
 
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-dhhgle5 — Number of children aged ≤ 5 in household
+dhhgle5 — Any child aged ≤ 5 in household (0 = none, 1 = one or more)
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Count
+Presence (0/1)
 </th>
 <th style="text-align:right;">
 N
@@ -5132,12 +5195,12 @@ N
 </table>
 <table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-dhhg611 — Number of children aged 6–11 in household
+dhhg611 — Any child aged 6–11 in household (0 = none, 1 = one or more)
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Count
+Presence (0/1)
 </th>
 <th style="text-align:right;">
 N
@@ -5173,11 +5236,60 @@ N
 </tbody>
 
 </table>
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+dhhgl12 — Any child aged under 12 in household (0 = none, 1 = one or more)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Presence (0/1)
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+% (of valid)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+49264
+</td>
+<td style="text-align:right;">
+77.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+14579
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+</tr>
+</tbody>
+
+</table>
 </div>
 </div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Note on missing household variables:</strong> <code>dhhdfc12p</code> (children ≥ 12 yrs) has no PUMF equivalent. See <a href="variable-inclusion.html">Variable Inclusion</a> §4.</p>
+<p><strong>Note on the three child-presence flags:</strong> <code>dhhgle5</code>, <code>dhhg611</code>, and <code>dhhgl12</code> are <strong>binary 0/1 presence indicators</strong> (0 = no such child in the household, 1 = one or more), not counts of children. All three are fully populated (0 missing across 63,843 rows).</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note on <code>dhhgl12</code> redundancy:</strong> <code>dhhgl12</code> denotes a child <strong>under</strong> 12 and is a deterministic function of the other two flags — <code>dhhgl12 == (dhhgle5 | dhhg611)</code> holds in all 63,843 rows, with zero discordant cases. Its marginal (22.8% positive) is therefore fully determined by the two component marginals (13.7% and 14.4%) and their overlap (3,340 households with both). Read it as a summary of the two, never as a third independent household characteristic.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note on missing household variables:</strong> <code>dhhdfc12p</code> (children ≥ 12 yrs) has no PUMF equivalent and is a <em>different</em> construct from <code>dhhgl12</code>. See <a href="variable-inclusion.html">Variable Inclusion</a> §4.</p>
 </blockquote>
 <hr>
 </section>
