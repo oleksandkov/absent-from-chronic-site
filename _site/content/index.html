@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../content/data-primer/univariate-distributions.html" rel="" target="">
- <span class="dropdown-text">Univariate Distributions</span></a>
+ <span class="dropdown-text">Univariate Distributions (data-primer-1)</span></a>
   </li>  
     </ul>
   </li>
@@ -139,43 +139,62 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-predictors">    
         <li>
+    <a class="dropdown-item" href="../content/predictors/exposure.html" rel="" target="">
+ <span class="dropdown-text">Exposure: Chronic Conditions (eda-61)</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../content/predictors/predisposing.html" rel="" target="">
- <span class="dropdown-text">Predisposing</span></a>
+ <span class="dropdown-text">Predisposing: Socio-demographic (eda-62)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/predictors/facilitating.html" rel="" target="">
+ <span class="dropdown-text">Facilitating: Health System &amp; Behaviours (eda-63)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/predictors/needs.html" rel="" target="">
+ <span class="dropdown-text">Needs: Perceived Health &amp; Limitations (eda-64)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/predictors/missingness.html" rel="" target="">
+ <span class="dropdown-text">Missingness (eda-65)</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Analysis</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-outcome" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Outcome</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-outcome">    
         <li>
-    <a class="dropdown-item" href="../content/analysis/outcome.html" rel="" target="">
- <span class="dropdown-text">Outcome (LOP Day Decomposition)</span></a>
+    <a class="dropdown-item" href="../content/outcome/day-decomposition.html" rel="" target="">
+ <span class="dropdown-text">Outcome: LOP Day Decomposition (eda-5)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/analysis/outcome-distribution.html" rel="" target="">
- <span class="dropdown-text">Outcome (Distribution Shapes)</span></a>
+    <a class="dropdown-item" href="../content/outcome/distribution-shapes.html" rel="" target="">
+ <span class="dropdown-text">Outcome: Distribution Shapes (eda-71)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/analysis/exposure.html" rel="" target="">
- <span class="dropdown-text">Exposure (Chronic Conditions)</span></a>
+    <a class="dropdown-item" href="../content/outcome/rescaling.html" rel="" target="">
+ <span class="dropdown-text">Outcome: Rescaling (eda-72)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Model</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-model">    
+        <li>
+    <a class="dropdown-item" href="../content/model/bivariate-models.html" rel="" target="">
+ <span class="dropdown-text">Bivariate Models (model-00)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/analysis/predisposing.html" rel="" target="">
- <span class="dropdown-text">Predisposing (Socio-demographic)</span></a>
+    <a class="dropdown-item" href="../content/model/lasso-rehearsal.html" rel="" target="">
+ <span class="dropdown-text">Lasso Rehearsal with Predisposing (model-0)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/analysis/facilitating.html" rel="" target="">
- <span class="dropdown-text">Facilitating (Health System &amp; Behaviours)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../content/analysis/needs.html" rel="" target="">
- <span class="dropdown-text">Needs (Perceived Health &amp; Limitations)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../content/analysis/missingness.html" rel="" target="">
- <span class="dropdown-text">Missingness</span></a>
+    <a class="dropdown-item" href="../content/model/variable-selection.html" rel="" target="">
+ <span class="dropdown-text">Variable Selection with Lasso (model-1)</span></a>
   </li>  
     </ul>
   </li>
@@ -257,7 +276,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Project</strong> contains the original statistical analysis instructions submitted by the PI. It is the authoritative statement of what the analysis must deliver.</p>
 <p><strong>Pipeline</strong> documents the data infrastructure: how the two raw CCHS files were transported into a staging database (Ferry), transformed into the analytic dataset (Ellis), and validated (Test). The CACHE Manifest describes the 69-column, 63,843-row dataset produced by the pipeline. The INPUT Manifest describes the two raw SPSS files.</p>
 <p><strong>Data Primer</strong> contains variable-level traceability. The Variable Inclusion page maps every construct in §2.2 of the Project Proposal to its concrete PUMF variable and Ellis implementation. The Univariate Distributions page shows the empirical distribution of every variable in the analytic sample.</p>
-<p><strong>Analysis</strong> contains seven exploratory data analyses organized by Andersen Behavioral Model domain: outcome decomposition, distribution shape analysis, primary exposure (chronic conditions), and the four predictor domains (predisposing, facilitating, needs, missingness).</p>
+<p><strong>Outcome</strong> contains three exploratory analyses of the LOP absence-day outcome: day decomposition by cause (eda-5), distribution shape diagnostics (eda-71), and rescaling (eda-72).</p>
+<p><strong>Predictors</strong> contains five exploratory analyses organized by Andersen Behavioral Model domain: the primary exposure of chronic conditions (eda-61), and the predisposing (eda-62), facilitating (eda-63), and needs (eda-64) domains, plus a missingness assessment (eda-65).</p>
 <p><strong>Site Map</strong> provides an oriented index of all pages with explicit Project Proposal linkage.</p>
 <hr>
 </section>
