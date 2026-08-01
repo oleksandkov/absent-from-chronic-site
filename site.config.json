@@ -1,0 +1,68 @@
+{
+  "siteName": "absent-from-chronic-site",
+  "siteTitle": "Absent From Chronic",
+  "initialized": true,
+  "initializedOn": "2026-08-01",
+  "source": {
+    "repoName": "absent-from-chronic",
+    "repoUrl": "https://github.com/RG-FIDES/absent-from-chronic",
+    "localPath": "C:\\Users\\andriy.koval\\Documents\\GitHub\\absent-from-chronic"
+  },
+  "frontend": {
+    "directory": "_frontend-1",
+    "siteSubdirectory": "_site"
+  },
+  "publish": {
+    "artifactDirectory": "_site",
+    "entryPoint": "index.html",
+    "landingPage": "content/index.html",
+    "requiredFiles": [
+      "index.html",
+      "content/index.html",
+      "search.json"
+    ],
+    "forbiddenExtensions": [
+      ".R",
+      ".r",
+      ".Rmd",
+      ".rds",
+      ".RData",
+      ".qmd",
+      ".ipynb",
+      ".py",
+      ".sav",
+      ".sas7bdat",
+      ".dta",
+      ".parquet",
+      ".sqlite",
+      ".sqlite3",
+      ".db",
+      ".accdb",
+      ".mdb",
+      ".env",
+      ".pem",
+      ".key"
+    ],
+    "forbiddenPathSegments": [
+      ".git",
+      ".quarto",
+      ".Rproj.user",
+      "_cache",
+      "_freeze",
+      "data-private",
+      "data-restricted",
+      "secrets"
+    ],
+    "sensitiveTextPatterns": [
+      "data-private"
+    ],
+    "preservedPaths": [
+      ".gitkeep"
+    ]
+  },
+  "hosts": {
+    "primary": "vercel",
+    "githubPages": false,
+    "netlify": false
+  }
+}
