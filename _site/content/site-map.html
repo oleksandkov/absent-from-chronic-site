@@ -80,40 +80,6 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../content/index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Project</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
-        <li>
-    <a class="dropdown-item" href="../content/project/project-proposal.html" rel="" target="">
- <span class="dropdown-text">Project Proposal</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pipeline" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Pipeline</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pipeline">    
-        <li>
-    <a class="dropdown-item" href="../content/pipeline/pipeline-guide.html" rel="" target="">
- <span class="dropdown-text">Pipeline Guide</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../content/pipeline/cache-manifest.html" rel="" target="">
- <span class="dropdown-text">CACHE Manifest</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../content/pipeline/input-manifest.html" rel="" target="">
- <span class="dropdown-text">INPUT Manifest</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-primer" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Data Primer</span>
@@ -194,12 +160,64 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="../content/site-map.html" rel="" target="" aria-current="page">
- <span class="menu-text">Site Map</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li>
+    <a class="dropdown-item" href="../content/analysis/story-1.html" rel="" target="">
+ <span class="dropdown-text">Story 1</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pipeline" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Pipeline</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pipeline">    
+        <li>
+    <a class="dropdown-item" href="../content/pipeline/pipeline-guide.html" rel="" target="">
+ <span class="dropdown-text">Pipeline Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/pipeline/cache-manifest.html" rel="" target="">
+ <span class="dropdown-text">CACHE Manifest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/pipeline/input-manifest.html" rel="" target="">
+ <span class="dropdown-text">INPUT Manifest</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-docs" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Docs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-docs">    
+        <li>
+    <a class="dropdown-item" href="../content/site-map.html" rel="" target="">
+ <span class="dropdown-text">Site Map</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/docs/project-proposal.html" rel="" target="">
+ <span class="dropdown-text">Project Proposal</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/docs/minding-the-agents.html" rel="" target="">
+ <span class="dropdown-text">Minding the Agents</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/RG-FIDES/absent-from-chronic" rel="" target="_blank"><i class="bi bi-github" role="img" aria-label="Source repository on GitHub">
+</i> 
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -247,15 +265,7 @@ ul.task-list li input[type="checkbox"] {
 <pre><code>Absent from Chronic
 │
 🏠  Index                                    COMPOSED  ← README.md, CACHE-manifest.md, ai/project/mission.md
-│
-├── Project
-│   └── Project Proposal                     ADAPTED   ← stats_instructions_v3.md
-│                                                         (sanitize: strip data-private refs)
-├── Pipeline
-│   ├── Pipeline Guide                       ADAPTED   ← manipulation/pipeline.md
-│   │                                                     (shortcode injection, sanitize, strip PowerShell)
-│   ├── CACHE Manifest                       VERBATIM  ← data-public/metadata/CACHE-manifest.md
-│   └── INPUT Manifest                       VERBATIM  ← data-public/metadata/INPUT-manifest.md
+│   (home page — reached via the navbar title, not a navbar entry)
 │
 ├── Data Primer
 │   ├── Variable Inclusion                   VERBATIM  ← analysis/data-primer-1/variable-inclusion.qmd
@@ -291,8 +301,23 @@ ul.task-list li input[type="checkbox"] {
 │   └── Variable Selection with Lasso        REDIRECT  → analysis/model-1/model-1.html
 │       (model-1)
 │
-└── Site Map                                 COMPOSED  ← publishing-contract.prompt.md,
-                                                          stats_instructions_v3.md</code></pre>
+├── Analysis
+│   └── Story 1                              REDIRECT  → analysis/eda-81/eda-81.html
+│       (eda-81)
+│
+├── Pipeline
+│   ├── Pipeline Guide                       ADAPTED   ← manipulation/pipeline.md
+│   │                                                     (shortcode injection, sanitize, strip PowerShell)
+│   ├── CACHE Manifest                       VERBATIM  ← data-public/metadata/CACHE-manifest.md
+│   └── INPUT Manifest                       VERBATIM  ← data-public/metadata/INPUT-manifest.md
+│
+└── Docs
+    ├── Site Map                             COMPOSED  ← publishing-contract.prompt.md,
+    │                                                     stats_instructions_v3.md
+    ├── Project Proposal                     ADAPTED   ← stats_instructions_v3.md
+    │                                                     (sanitize: strip data-private refs)
+    └── Minding the Agents                   REDIRECT  → analysis/talks/minding-the-agents/slides.html
+        (talk slides)</code></pre>
 <hr>
 </section>
 <section id="content-type" class="level2">
@@ -347,7 +372,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="project/project-proposal.html">Project Proposal</a></td>
+<td><a href="docs/project-proposal.html">Project Proposal</a></td>
 <td>§1–§6 (all)</td>
 <td>Full text of the statistical analysis instructions as submitted by the PI. Contains all requirements, inclusion/exclusion criteria, variable specifications, analytic plan, and deliverables.</td>
 </tr>
@@ -430,6 +455,11 @@ ul.task-list li input[type="checkbox"] {
 <td><a href="model/variable-selection.html">Variable Selection with Lasso (model-1)</a></td>
 <td>§5.4 (variable selection via LASSO), §5.5 (primary multivariable models)</td>
 <td>Model-1: Implements §5.4 across the full candidate set in nine reviewable steps — candidate registry, missing data, analytic sample, decision registry, four specifications, penalised Poisson fitting, selection results, negative binomial refitting, and a reproducibility ledger. Flags the one decision that cannot be reversed and produces the predictor set carried into the §5.5 primary models.</td>
+</tr>
+<tr class="even">
+<td><a href="analysis/story-1.html">Story 1 (eda-81)</a></td>
+<td>§5.3 (bivariate analysis), §5.4 (variable selection via LASSO)</td>
+<td>EDA-81: The interpretation layer over <code>model-00</code> and <code>model-1</code>. Explains what the penalty is doing — what <code>lambda</code> is, what the <code>lambda.min</code> and <code>lambda.1se</code> rules each optimise, and why the perceived-health variables toggle on and off across specifications. Then aligns the evidence on one shared row axis: unadjusted signal (§5.3), selection verdict (§5.4), and adjusted estimate.</td>
 </tr>
 </tbody>
 </table>
