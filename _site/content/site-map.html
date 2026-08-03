@@ -158,6 +158,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../content/model/variable-selection.html" rel="" target="">
  <span class="dropdown-text">Variable Selection with Lasso (model-1)</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../content/model/condition-specific-models.html" rel="" target="">
+ <span class="dropdown-text">Condition-Specific Models (model-2)</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -298,8 +302,10 @@ ul.task-list li input[type="checkbox"] {
 │   │   (model-00)
 │   ├── Lasso Rehearsal with Predisposing    REDIRECT  → analysis/model-0/model-0.html
 │   │   (model-0)
-│   └── Variable Selection with Lasso        REDIRECT  → analysis/model-1/model-1.html
-│       (model-1)
+│   ├── Variable Selection with Lasso         REDIRECT  → analysis/model-1/model-1.html
+│   │   (model-1)
+│   └── Condition-Specific Models             REDIRECT  → analysis/model-2/model-2.html
+│       (model-2)
 │
 ├── Analysis
 │   └── Story 1                              REDIRECT  → analysis/eda-81/eda-81.html
@@ -457,6 +463,11 @@ ul.task-list li input[type="checkbox"] {
 <td>Model-1: Implements §5.4 across the full candidate set in nine reviewable steps — candidate registry, missing data, analytic sample, decision registry, four specifications, penalised Poisson fitting, selection results, negative binomial refitting, and a reproducibility ledger. Flags the one decision that cannot be reversed and produces the predictor set carried into the §5.5 primary models.</td>
 </tr>
 <tr class="even">
+<td><a href="model/condition-specific-models.html">Condition-Specific Models (model-2)</a></td>
+<td>§5.7 (condition-specific models), §5.8 (comparison across conditions)</td>
+<td>Model-2: Repeats the Model-1 selection-and-estimation procedure once inside each chronic-condition subgroup, in ten reviewable steps mirroring Model-1’s artifact roles (<code>t6</code> deliverable table, <code>t62</code> full ledger, <code>t61</code> in-sample metrics, <code>t63</code>/<code>t64</code> held-out metrics, <code>t7</code> manifest). Records every settlement the proposal leaves open — which CCC items answer to the §2.2 condition names, duplicate-question handling, age-restricted universes, whether the remaining conditions stay in the model, and which §5.4 specification “the same LASSO procedure” refers to.</td>
+</tr>
+<tr class="odd">
 <td><a href="analysis/story-1.html">Story 1 (eda-81)</a></td>
 <td>§5.3 (bivariate analysis), §5.4 (variable selection via LASSO)</td>
 <td>EDA-81: The interpretation layer over <code>model-00</code> and <code>model-1</code>. Explains what the penalty is doing — what <code>lambda</code> is, what the <code>lambda.min</code> and <code>lambda.1se</code> rules each optimise, and why the perceived-health variables toggle on and off across specifications. Then aligns the evidence on one shared row axis: unadjusted signal (§5.3), selection verdict (§5.4), and adjusted estimate.</td>

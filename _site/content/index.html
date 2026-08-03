@@ -59,10 +59,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="mermaid-theme" content="neutral">
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -161,6 +157,10 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../content/model/variable-selection.html" rel="" target="">
  <span class="dropdown-text">Variable Selection with Lasso (model-1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/model/condition-specific-models.html" rel="" target="">
+ <span class="dropdown-text">Condition-Specific Models (model-2)</span></a>
   </li>  
     </ul>
   </li>
@@ -310,51 +310,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="pipeline-architecture" class="level2">
 <h2 class="anchored" data-anchor-id="pipeline-architecture">Pipeline Architecture</h2>
 <p>The data pipeline follows a three-lane Ferry → Ellis → Test pattern, beginning from two raw CCHS SPSS files and producing a validated analytic SQLite database and Parquet archive.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    RAW_2010["CCHS2010_LOP.sav\n(~62,909 rows)"]
-    RAW_2014["CCHS_2014_EN_PUMF.sav\n(~63,522 rows)"]
-
-    subgraph Lane0["Lane 0 – Metadata"]
-        META["0-extract-metadata.R\nExtract variable/value labels\nWrite codebook CSVs"]
-    end
-
-    subgraph Lane1["Lane 1 – Ferry"]
-        FERRY["1-ferry.R\nFull transport (zap labels)\nWrite to staging SQLite"]
-    end
-
-    subgraph Lane2["Lane 2 – Ellis"]
-        ELLIS["2-ellis.R\nAlias resolution\nWhite-list (Tier 1+2)\nSample exclusion\nFactor recoding\nOutcome construction\nWeight pooling"]
-    end
-
-    subgraph Lane3["Lane 3 – Test"]
-        TEST["3-test-ellis-cache.R\nArtifact existence\nSQLite ↔ Parquet parity\nData quality checks\nSample flow validation"]
-    end
-
-    CODEBOOK["Codebook CSVs\n(4 files)"]
-    FERRY_DB["Staging SQLite\n(cchs_2010, cchs_2014)"]
-    FERRY_PQ["Staging Parquet\n(cchs_2010, cchs_2014)"]
-    ELLIS_DB["Analytic SQLite\n(cchs_analytic, sample_flow)"]
-    ELLIS_PQ["Analytic Parquet\n(cchs_analytic, sample_flow)"]
-
-    RAW_2010 --&gt; Lane0 --&gt; CODEBOOK
-    RAW_2014 --&gt; Lane0
-    RAW_2010 --&gt; Lane1 --&gt; FERRY_DB
-    RAW_2014 --&gt; Lane1
-    FERRY_DB --&gt; Lane2 --&gt; ELLIS_DB
-    Lane1 --&gt; FERRY_PQ
-    Lane2 --&gt; ELLIS_PQ
-    ELLIS_DB --&gt; Lane3
-    ELLIS_PQ --&gt; Lane3
-</pre>
-</div>
-</div>
-</div>
-</div>
-<p>The rendered pipeline architecture diagram is shown below for reference.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/pipeline-architecture.jpg" class="img-fluid figure-img" style="width:90.0%"></p>
