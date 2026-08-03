@@ -1,0 +1,69 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Publish site: dry run",
+      "detail": "Report the delta from _frontend-1/_site without changing anything.",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/sync-site.ps1",
+        "-Source",
+        "C:\\Users\\andriy.koval\\Documents\\GitHub\\absent-from-chronic\\_frontend-1\\_site"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Publish site: apply",
+      "detail": "Transfer the render into _site. Will not remove retired pages.",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/sync-site.ps1",
+        "-Source",
+        "C:\\Users\\andriy.koval\\Documents\\GitHub\\absent-from-chronic\\_frontend-1\\_site",
+        "-Apply"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Publish site: apply and allow deletions",
+      "detail": "Transfer the render into _site, removing pages absent from the source. Run the dry run first and review every deletion.",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/sync-site.ps1",
+        "-Source",
+        "C:\\Users\\andriy.koval\\Documents\\GitHub\\absent-from-chronic\\_frontend-1\\_site",
+        "-Apply",
+        "-AllowDelete"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
+}

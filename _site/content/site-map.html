@@ -162,6 +162,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../content/model/condition-specific-models.html" rel="" target="">
  <span class="dropdown-text">Condition-Specific Models (model-2)</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../content/model/sex-stratified-models.html" rel="" target="">
+ <span class="dropdown-text">Sex-Stratified Models (model-3)</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -304,8 +308,10 @@ ul.task-list li input[type="checkbox"] {
 │   │   (model-0)
 │   ├── Variable Selection with Lasso         REDIRECT  → analysis/model-1/model-1.html
 │   │   (model-1)
-│   └── Condition-Specific Models             REDIRECT  → analysis/model-2/model-2.html
-│       (model-2)
+│   ├── Condition-Specific Models             REDIRECT  → analysis/model-2/model-2.html
+│   │   (model-2)
+│   └── Sex-Stratified Models                 REDIRECT  → analysis/model-3/model-3.html
+│       (model-3)
 │
 ├── Analysis
 │   └── Story 1                              REDIRECT  → analysis/eda-81/eda-81.html
@@ -468,6 +474,11 @@ ul.task-list li input[type="checkbox"] {
 <td>Model-2: Repeats the Model-1 selection-and-estimation procedure once inside each chronic-condition subgroup, in ten reviewable steps mirroring Model-1’s artifact roles (<code>t6</code> deliverable table, <code>t62</code> full ledger, <code>t61</code> in-sample metrics, <code>t63</code>/<code>t64</code> held-out metrics, <code>t7</code> manifest). Records every settlement the proposal leaves open — which CCC items answer to the §2.2 condition names, duplicate-question handling, age-restricted universes, whether the remaining conditions stay in the model, and which §5.4 specification “the same LASSO procedure” refers to.</td>
 </tr>
 <tr class="odd">
+<td><a href="model/sex-stratified-models.html">Sex-Stratified Models (model-3)</a></td>
+<td>§5.9 (sex-stratified models, Table 5), §5.10 (model performance evaluation)</td>
+<td>Model-3: Repeats the Model-1 selection-and-estimation procedure inside the female and the male stratum, in ten reviewable steps mirroring Model-1’s artifact roles (<code>t6</code> deliverable Table 5, <code>t62</code> full ledger, <code>t61</code> in-sample metrics, <code>t63</code>/<code>t64</code> held-out metrics, <code>t7</code> manifest). Carries all four §5.4 specifications, measures how far the two strata differ in composition before any model is fitted, and delivers the female–male comparison §5.9 asks for on a union model (<code>t65</code>, <code>g5</code>, <code>g51</code>) so that a term the penalty declined to select is never mistaken for a null association.</td>
+</tr>
+<tr class="even">
 <td><a href="analysis/story-1.html">Story 1 (eda-81)</a></td>
 <td>§5.3 (bivariate analysis), §5.4 (variable selection via LASSO)</td>
 <td>EDA-81: The interpretation layer over <code>model-00</code> and <code>model-1</code>. Explains what the penalty is doing — what <code>lambda</code> is, what the <code>lambda.min</code> and <code>lambda.1se</code> rules each optimise, and why the perceived-health variables toggle on and off across specifications. Then aligns the evidence on one shared row axis: unadjusted signal (§5.3), selection verdict (§5.4), and adjusted estimate.</td>
