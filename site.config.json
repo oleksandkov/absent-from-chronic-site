@@ -53,9 +53,7 @@
       "data-restricted",
       "secrets"
     ],
-    "sensitiveTextPatterns": [
-      "data-private"
-    ],
+    "sensitiveTextPatterns": [],
     "preservedPaths": [
       ".gitkeep"
     ]
