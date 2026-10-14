@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <meta name="author" content="Project Overview">
+  <meta name="dcterms.date" content="2026-07-15">
+  <title>Absent from Chronic</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Absent from Chronic</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Project Overview 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-07-15</p>
+</section>
+<section>
+<section id="goals-of-the-project" class="title-slide slide level1 center" data-background-color="#FEF9E7" style="font-size: 80%;">
+<h1>Goals of the Project</h1>
+<p><span style="font-size: 70%;"><em><a href="https://absent-from-chronic-site.vercel.app"><strong>Absent from Chronic</strong></a> aims to demonstrate a responsible use of AI in reproducible research and emerging tools for collaboration in data science. We encourage the use of AI-assistants to interrogate our research artefacts.</em></span></p>
+<div style="font-size: 65%;">
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Who</th>
+<th>Contributes</th>
+<th>Receives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data Scientist</strong></td>
+<td>Andriy Koval</td>
+<td>Delivers on the request — pipeline, analysis, reporting</td>
+<td>A request precise enough to be answerable, and infrastructure that holds</td>
+</tr>
+<tr class="even">
+<td><strong>Researcher</strong></td>
+<td>Marc-André Blanchette</td>
+<td>Formulates the information request and judges whether the answer is scientifically meaningful</td>
+<td>An analytic product built to the question actually asked</td>
+</tr>
+<tr class="odd">
+<td><strong>Support</strong></td>
+<td>Oleksandr Koval</td>
+<td>DevOps: environments, harnesses, reproducible builds</td>
+<td>Mentorship in data science and analytics</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span style="font-size: 65%;"><em>Each participant gives what they hold and takes what they lack. The project is the medium in which that exchange is tested.</em></span></p>
+</section>
+<section id="addressed-topics" class="slide level2" data-background-color="#FEF9E7" style="font-size: 65%;">
+<h2>Addressed Topics</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 75%;">
+<p><strong>Absent from Chronic</strong> Project:</p>
+<p><em>What chronic conditions are related to productivity loss?</em></p>
+<p><em>What predictors survive the LASSO penalty?</em></p>
+<p>Here’s a <a href="https://absent-from-chronic-site.vercel.app/content/docs/project-proposal.html">research proposal</a> — address this information request.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 70%;">
+<ol type="1">
+<li><strong>Business Context</strong> — the problem worth solving</li>
+<li><strong>Data and Preparation</strong> — how the rectangle was earned</li>
+<li><strong>Model Development</strong> — estimation and selection</li>
+<li><strong>Operationalization</strong> — putting it where it can be used</li>
+<li><strong>Outcomes</strong> — what was produced, what was learned</li>
+<li><strong>Leadership &amp; Project Management</strong> — roles, decisions, accountability</li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="business-context-research-question" class="title-slide slide level1 center" data-background-color="#EAF2F8" style="font-size: 55%;">
+<h1>1. Business Context — Research Question</h1>
+<p><span style="font-size: 90%;"><em>How do chronic conditions contribute to the loss of productivity?</em></span></p>
+<div style="font-size: 90%;">
+<p>The <strong>Loss of Productivity (LOP)</strong> module of the <strong>Canadian Community Health Survey (CCHS)</strong> asks respondents to report the number of days they were absent from work in the previous three months for any health reason, including chronic conditions.</p>
+</div>
+<div style="margin: 0; padding: 0; width: 100%;">
+<p><img src="images/eda-5-g0-lop-zero-vs-nonzero.png" alt="Stacked bar showing 70.5 percent of the analytical sample with no missed days and 29.5 percent with at least one missed day, the non-zero segment split into a day-range gradient" style="width: 100%; height: auto; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g0</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/outcome/day-decomposition.html">Outcome: LOP Day Decomposition (eda-5)</a></span></p>
+</section>
+<section id="business-context-why" class="slide level2" data-background-color="#EAF2F8" style="font-size: 55%;">
+<h2>1. Business Context — Why</h2>
+<p><span style="font-size: 90%;"><em>Chronic conditions are not rare among working Canadians — they are ordinary.</em></span></p>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div style="margin: 0; padding: 0; width: 100%;">
+<p><img src="images/eda-61-g12-prevalence-by-cycle.png" alt="Horizontal bar chart of weighted prevalence for seventeen chronic conditions, each shown for the 2010-2011 and 2013-2014 CCHS cycles, led by back problems at roughly 17 percent" style="width: 100%; height: auto; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g12</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/predictors/exposure.html">Exposure: Chronic Conditions (eda-61)</a></span></p>
+</div><div class="column" style="width:25%;">
+<div style="font-size: 85%;">
+<p><strong>63,843</strong> respondents in the analytic rectangle, representing — once the pooled survey weights are applied — <strong>17,844,913</strong> employed Canadians aged 15–75.</p>
+<p>Back problems reach roughly <strong>17%</strong>, high blood pressure and migraine near <strong>10%</strong>, and the ranking barely moves between the 2010–2011 and 2013–2014 cycles.</p>
+<p>A condition carried by one worker in six is a workforce question, not only a clinical one.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="business-context-project-objectives" class="slide level2" data-background-color="#EAF2F8" style="font-size: 50%;">
+<h2>1. Business Context — Project Objectives</h2>
+<div style="font-size: 100%;">
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Objective</th>
+<th>Delivered as</th>
+<th><a href="https://absent-from-chronic-site.vercel.app/content/docs/project-proposal.html">Proposal</a> §</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Measure absenteeism and its chronic-condition share</td>
+<td>Outcome and sensitivity outcome, both from the LOP module</td>
+<td>4.1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Establish which factors predict absenteeism, adjusted</td>
+<td>LASSO selection, then negative binomial estimation</td>
+<td>5.4–5.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Test whether predictors differ <strong>by condition</strong></td>
+<td>One model per chronic condition</td>
+<td>5.7</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Test whether predictors differ <strong>by sex</strong></td>
+<td>Female and male models, compared</td>
+<td>5.9</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Make the whole chain re-runnable</td>
+<td>Reproducible script, raw import to final tables</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 80%;">
+<p>Objectives 1–4 are stated as quantities to be estimated, not as accuracy targets. Objective 5 is what makes the other four checkable by someone else.</p>
+</div>
+</section></section>
+<section>
+<section id="data-and-prep-measure-of-interest" class="title-slide slide level1 center" data-background-color="#D6EAF8" style="font-size: 45%;">
+<h1>2. Data and Prep — Measure of Interest</h1>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/eda-71-g23-chronic-vs-other-split.png" alt="Sample partition bar beside two histograms: chronic-absence days for 3,626 respondents and other-only non-chronic absence days for 15,211 respondents" style="width: auto; height: auto; max-width: 100%; max-height: 84vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g23</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/outcome/distribution-shapes.html">Outcome: Distribution Shapes (eda-71)</a></span></p>
+</section>
+<section id="data-and-prep-predictor-set" class="slide level2" data-background-color="#D6EAF8" style="font-size: 70%;">
+<h2>2. Data and Prep — Predictor Set</h2>
+<div style="font-size: 80%;">
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th style="text-align: right;">Included</th>
+<th style="text-align: right;">Excluded</th>
+<th style="text-align: right;">Total</th>
+<th>Representative examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exposure</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td>Arthritis<br>Back problems<br>Mood disorder<br>Migraine</td>
+</tr>
+<tr class="even">
+<td>Facilitating</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td>Household income<br>Work schedule<br>Occupation<br>Work stress</td>
+</tr>
+<tr class="odd">
+<td>Needs</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>Self-perceived health<br>Injured past 12 months<br>Needs help: housework</td>
+</tr>
+<tr class="even">
+<td>Predisposing</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td>Age group<br>Sex<br>Education<br>Immigration status</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 75%;">
+<p>Candidate counts by Andersen domain. Exclusions are evidentiary, not convenience: <code>cc_copd</code> is asked only of respondents aged 35+, <code>has_family_doctor</code> is optional content missing outside Ontario in 2010–2011, and <code>dhhgage</code> duplicates the age recode already in the set.</p>
+</div>
+</section></section>
+<section>
+<section id="model-dev-scale-of-the-criterion" class="title-slide slide level1 center" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h1>3. Model Dev — Scale of the Criterion</h1>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/eda-5-g04-lop-days-faceted-free.png" alt="Nine faceted frequency histograms of days absent by LOP reason, each facet on independent axes: chronic condition, injury, cold, flu, gastroenteritis, respiratory infection, other infectious disease, other physical or mental health, and the combined total of 18,837 respondents" style="width: auto; height: auto; max-width: 100%; max-height: 84vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g04</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/outcome/day-decomposition.html">Outcome: LOP Day Decomposition (eda-5)</a></span></p>
+</section>
+<section id="model-dev-link-transform" class="slide level2" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h2>3. Model Dev — Link &amp; Transform</h2>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/eda-71-g32-transform-ecdf.png" alt="Five ECDF panels for the positive part of chronic absence days on raw, square-root, log1p, IHS, and log scales, each with Gaussian and Poisson reference curves" style="width: auto; height: auto; max-width: 100%; max-height: 84vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g32</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/outcome/distribution-shapes.html">Outcome: Distribution Shapes (eda-71)</a></span></p>
+</section>
+<section id="model-dev-link-transform-1" class="slide level2" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h2>3. Model Dev — Link &amp; Transform</h2>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/eda-71-g33-density-vs-gaussian.png" alt="Five density panels comparing the empirical distribution of positive chronic absence days against a fitted Gaussian on raw, square-root, log1p, IHS, and log scales" style="width: auto; height: auto; max-width: 100%; max-height: 84vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g33</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/outcome/distribution-shapes.html">Outcome: Distribution Shapes (eda-71)</a></span></p>
+</section>
+<section id="model-dev-why-zinb" class="slide level2" data-background-color="#FDEBD0" style="font-size: 70%;">
+<h2>3. Model Dev — Why ZINB</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="font-size: 85%;"><strong>What the diagnostics say</strong></span></p>
+<div style="font-size: 90%;">
+<p><strong>Count nature</strong> — days absent is a non-negative integer. <code>log1p</code> and <code>sqrt</code> can be made to <em>look</em> Gaussian, but they distort the mean–variance relationship and complicate back-transformation. A count-native likelihood preserves interpretability.</p>
+<p><strong>Overdispersion</strong> — the heavy right tail and the gap between P90 and P99 put variance far above the mean. Poisson assumes they are equal; the <strong>negative binomial</strong> adds a dispersion parameter that absorbs the excess. Without it, standard errors are artificially narrow.</p>
+<p><strong>Excess zeros from a dual process</strong> — 94.3% of the sample reports zero chronic-absence days, and those zeros are not all alike.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span style="font-size: 85%;"><strong>How the model is built — two parts</strong></span></p>
+<div style="font-size: 90%;">
+<p><strong>Part 1 · Inflate (logistic)</strong> — the probability of being a <strong>structural zero</strong>: a worker who could not have generated chronic-absence days at all.</p>
+<p><em>Who is at risk of any absence?</em></p>
+<p><strong>Part 2 · Count (negative binomial, log link)</strong> — the expected number of days <strong>among those at risk</strong>, with dispersion parameter <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.</p>
+<p><em>Among those at risk, what drives higher day counts?</em></p>
+</div>
+<div style="font-size: 68%;">
+<p>Treating both kinds of zero alike under a plain NB underestimates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>=</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(y = 0)</annotation></semantics></math> and biases the count coefficients upward. The mixture separates the two questions inside one model.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="model-dev-fitting-conditions" class="title-slide slide level1 center" data-background-color="#FDEBD0" style="font-size: 50%;">
+<h1>3. Model Dev — Fitting Conditions</h1>
+<p><span style="font-size: 75%;"><em>The proposal’s §5.4 names four models. They are not four fits — they are <strong>two fits read at two penalties each</strong>. <code>cv.glmnet</code> returns an entire path; <code>lambda.min</code> and <code>lambda.1se</code> are two points on it.</em></span></p>
+<div style="font-size: 90%;">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 6%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Role</th>
+<th>Self-perceived health</th>
+<th>Penalty rule</th>
+<th style="text-align: right;">Columns offered</th>
+<th style="text-align: right;">λ</th>
+<th style="text-align: right;">Columns kept</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model 1</td>
+<td>Primary</td>
+<td>excluded</td>
+<td><code>lambda.1se</code></td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.1936</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>Model 2</td>
+<td>Secondary</td>
+<td>included</td>
+<td><code>lambda.1se</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.2128</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td>Model 3</td>
+<td>Sensitivity</td>
+<td>excluded</td>
+<td><code>lambda.min</code></td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.0301</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="even">
+<td>Model 4</td>
+<td>Sensitivity</td>
+<td>included</td>
+<td><code>lambda.min</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.0275</td>
+<td style="text-align: right;">57</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="columns" style="font-size: 66%;">
+<div class="column" style="width:50%;">
+<p><strong>The two lambdas</strong></p>
+<p><code>lambda.min</code> minimises cross-validated deviance — permissive, keeps everything that helps prediction.</p>
+<p><code>lambda.1se</code> is the largest penalty within one standard error of that minimum — parsimonious, keeps only what CV can defend.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>The perceived-health toggle</strong></p>
+<p>Three self-rated health measures are withheld from Models 1 and 3 by design: the proposal expects them to absorb signal carried by the individual conditions.</p>
+<p>Withholding them makes the design matrix 88 columns wide; offering them makes it 100.</p>
+</div>
+</div>
+<div style="font-size: 62%;">
+<p>Because the penalties are read off one path, the parsimonious and permissive specifications are <strong>nested</strong>, not merely similar.</p>
+</div>
+</section>
+<section id="model-dev-cross-validated-deviance" class="slide level2" data-background-color="#FDEBD0" style="font-size: 65%;">
+<h2>3. Model Dev — Cross-Validated Deviance</h2>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-1-g2-cv-curves.png" alt="Two side-by-side line charts of five-fold cross-validated Poisson deviance against lambda on a log scale with a one-standard-error band, dashed markers for lambda.min and lambda.1se, perceived health excluded at left and included at right" style="width: 100%; height: auto; max-height: 80vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g2</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/variable-selection.html">Variable Selection with Lasso (model-1)</a></span></p>
+<div style="font-size: 75%;">
+<p>Both curves are <strong>shallow to the left of their minima</strong>. That flatness is what makes the one-standard-error rule bite: across a wide band of penalties, cross-validation genuinely cannot tell the models apart.</p>
+</div>
+</section>
+<section id="model-dev-coefficient-paths" class="slide level2" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h2>3. Model Dev — Coefficient Paths</h2>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-1-g3-paths.png" alt="Two coefficient-path plots, each thin line a design column's penalised Poisson coefficient against lambda on a log scale, coloured by Andersen domain, with dashed lines marking the two penalty rules" style="width: 100%; height: auto; max-height: 80vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 70%;"><strong>g3</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/variable-selection.html">Variable Selection with Lasso (model-1)</a></span></p>
+<div style="font-size: 100%;">
+<p>Same 48,967 respondents in both panels; they differ only in what was offered.<br> Needs and Exposure survive furthest to the right — they are the last to be shrunk to zero.</p>
+</div>
+</section></section>
+<section>
+<section id="model-dev-what-survived" class="title-slide slide level1 center" data-background-color="#FDEBD0" style="font-size: 50%;">
+<h1>3. Model Dev — What Survived</h1>
+<div class="columns">
+<div class="column" style="width:58%;">
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-1-g4-selection-grid.png" alt="Selection grid showing which exposure, predisposing, facilitating, and needs variables were retained or eliminated by the LASSO penalty across four model specifications" style="width: 100%; height: auto; max-height: 85vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 60%;"><strong>g4</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/variable-selection.html">Variable Selection with Lasso (model-1)</a></span></p>
+</div><div class="column" style="width:42%;">
+<div style="font-size: 75%;">
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 27%">
+<col style="width: 20%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Perceived health</th>
+<th>Penalty</th>
+<th style="text-align: right;">Offered</th>
+<th style="text-align: right;">Retained</th>
+<th style="text-align: right;">Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model 1</td>
+<td>excluded</td>
+<td><code>lambda.1se</code></td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>Model 2</td>
+<td>included</td>
+<td><code>lambda.1se</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td>Model 3</td>
+<td>excluded</td>
+<td><code>lambda.min</code></td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="even">
+<td>Model 4</td>
+<td>included</td>
+<td><code>lambda.min</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">42</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 90%;">
+<p>One expectation is <strong>inverted</strong>. The proposal reasoned that offering self-rated health would <em>shrink</em> the retained set. Absorption does occur — the exposure domain loses variables — but the three perceived-health measures themselves enter, and they more than replace what they displaced.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-dev-two-other-scenarios" class="slide level2" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h2>3. Model Dev — Two Other Scenarios</h2>
+<p><span style="font-size: 105%;"><em>The proposal asks the same selection procedure to run twice more: <strong>inside each chronic condition</strong> (§5.7–5.8) and <strong>separately for women and men</strong> (§5.9–5.10).</em></span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 80%;">
+<p><strong>Model 2 — condition-specific.</strong> Seventeen subgroups, one model each. Reading <em>down</em> a column gives one disease’s verdict; reading <em>across</em> a row finds variables that predict absence <strong>whatever</strong> the condition — needing help with errands, meals and housework, mood disorder, migraine, back problems, marital status.</p>
+</div>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-2-g4-selection-grid.png" alt="Selection grid across seventeen condition-specific models, rows are candidate variables grouped by Andersen domain and columns are chronic conditions ordered by subgroup size" style="width: 100%; height: auto; max-height: 66vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 90%;"><strong>g4</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/condition-specific-models.html">Condition-Specific Models (model-2)</a></span></p>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 75%;">
+<p><strong>Model 3 — sex-stratified.</strong> Female against male within each of the four specifications. Under the parsimonious penalty both sexes converge on a short shared list; only under <code>lambda.min</code> does the divergence Section 5.9 asks about become visible — and much of it sits in the <em>Predisposing</em> and <em>Facilitating</em> domains, not in the diseases.</p>
+</div>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-3-g4-selection-grid.png" alt="Selection grid comparing retained variables for female and male respondents within each of the four specifications" style="width: 100%; height: auto; max-height: 66vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 90%;"><strong>g4</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/sex-stratified-models.html">Sex-Stratified Models (model-3)</a></span></p>
+</div>
+</div>
+</section>
+<section id="model-dev-model-performance" class="slide level2" data-background-color="#FDEBD0" style="font-size: 45%;">
+<h2>3. Model Dev — Model Performance</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div style="font-size: 70%;">
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 5%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th style="text-align: right;">Terms</th>
+<th style="text-align: right;">Held-out C</th>
+<th style="text-align: right;">McFadden <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math></th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">Terms when selection re-runs per fold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model 1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.613</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">4.02</td>
+<td style="text-align: right;">8 – 38</td>
+</tr>
+<tr class="even">
+<td>Model 2</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.630</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">3.98</td>
+<td style="text-align: right;">15 – 31</td>
+</tr>
+<tr class="odd">
+<td>Model 3</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">0.640</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">68 – 83</td>
+</tr>
+<tr class="even">
+<td>Model 4</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.653</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">81 – 91</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/model-1-g6-cv-spread.png" alt="Four panels of dot plots showing held-out RMSE, MAE, McFadden R-squared and C-statistic for each of the four models, with individual folds and their mean under a fixed term set and under selection re-run inside each fold" style="width: 100%; height: auto; max-height: 62vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 80%;"><strong>g6</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/model/variable-selection.html">Variable Selection with Lasso (model-1)</a></span></p>
+</div><div class="column" style="width:48%;">
+<div style="font-size: 92%;">
+<ul>
+<li><strong>Discrimination is modest.</strong> Held-out C climbs only from 0.613 to 0.653 as the model grows from 10 terms to 81. Eight times the complexity buys four points of ordering.</li>
+<li><strong>The C-statistic is narrower than it looks.</strong> With 69.3% of respondents at zero days, only <strong>49.1%</strong> of respondent pairs are comparable. C measures ordering <em>among those who differ in days absent</em> — not absence against none.</li>
+<li><strong>McFadden <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math> of 0.02–0.03</strong> is small but not anomalous for individual-level count data; the model describes population-level gradients, not individual futures.</li>
+<li><strong>RMSE gets worse as terms are added</strong> — 4.02 for Model 1 against 4.46 for Model 4. The larger specifications fit the tail, not the mass.</li>
+<li><strong>Selection cost almost nothing in optimism.</strong> Fixed term set and selection-re-run differ in the third or fourth decimal, several with the wrong sign. At ~49,000 respondents, selecting on the full sample is nearly free.</li>
+<li><strong>But the selected set is unstable.</strong> Model 1 names 10 variables on the full sample and between <strong>8 and 38</strong> across training folds. <em>Which</em> variables LASSO named is substantially a function of which four-fifths it saw.</li>
+<li><strong>Between-fold spread is the honest error bar.</strong> A gap between two models smaller than the scatter within either of them is not a difference.</li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="operationalization-pipeline-see-guide" class="title-slide slide level1 center" data-background-color="#EBDEF0" style="font-size: 45%;">
+<h1>4. Operationalization — Pipeline (<a href="https://absent-from-chronic-site.vercel.app/content/pipeline/pipeline-guide.html">see Guide</a>)</h1>
+<div style="margin: 0; padding: 0; width: 100%;">
+<p><img src="images/pipeline-architecture.jpg" alt="Left-to-right flowchart of the CCHS absenteeism pipeline: two SPSS source files feed Lane 0 metadata extraction and Lane 1 ferry transport, whose SQLite output feeds Lane 2 ellis transformation, whose outputs feed Lane 3 tests" style="width: 100%; height: auto; max-height: 52vh; object-fit: contain; display: block;"></p>
+</div>
+<div class="columns" style="font-size: 82%;">
+<div class="column" style="width:25%;">
+<p><strong>Lane 0 · Metadata</strong></p>
+<p><code>codebook-variable-labels.csv</code> <code>codebook-value-labels.csv</code> <code>codebook-cycle-comparison.csv</code> <code>codebook-research-vars-check.csv</code></p>
+</div><div class="column" style="width:25%;">
+<p><strong>Lane 1 · Ferry</strong></p>
+<p><code>cchs-1.sqlite</code> — <code>cchs_2010</code>, <code>cchs_2014</code> <code>cchs-1-ferry/*.parquet</code> <code>INPUT-manifest.md</code></p>
+</div><div class="column" style="width:25%;">
+<p><strong>Lane 2 · Ellis</strong></p>
+<p><code>cchs-2.sqlite</code> — <code>cchs_analytic</code>, <code>sample_flow</code> <code>cchs_analytic.parquet</code> (63,843 × 70) <code>sample_flow.parquet</code> <code>CACHE-manifest.md</code></p>
+</div><div class="column" style="width:25%;">
+<p><strong>Lane 3 · Test</strong></p>
+<p>24 assertions — artifact existence, SQLite-to-parquet parity, data quality, sample-flow validation <code>pipeline-validation.dcf</code></p>
+</div>
+</div>
+</section>
+<section id="operationalization-version-control" class="slide level2" data-background-color="#EBDEF0" style="font-size: 42%;">
+<h2>4. Operationalization — Version Control</h2>
+<p><span style="font-size: 105%;"><em>Version control is not “the code is in Git.” It is a chain in which every displayed number traces to a script, every script to a declared input, and every change to a dated record. Let’s exemplify with specific scenario: on <strong>2026-08-01</strong> the pipeline admitted a variable it had previously reported as unavailable.</em></span></p>
+<div style="font-size: 88%;">
+<table>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">#</th>
+<th>Hop</th>
+<th>Artifact</th>
+<th>What the record says</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Claim retracted</td>
+<td><code>CACHE-manifest.md</code></td>
+<td>“No house-ownership construct exists in the PUMF.” <em>That claim was wrong and has been retracted.</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Input verified</td>
+<td><code>INPUT-manifest.md</code></td>
+<td><code>DHH_OWN</code> present in both cycles; 99.74% coverage; every province × cycle cell above 99.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Hazard declared</td>
+<td><code>INPUT-manifest.md</code></td>
+<td>Encoding differs by cycle — 2010–11 stores not-stated as system missing, 2013–14 as codes 7 / 8 / 9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Transformation written</td>
+<td><code>2-ellis.R</code></td>
+<td><code>1 → Owner</code>, <code>2 → Renter</code>, everything else <code>→ NA</code> — explicitly <em>not</em> <code>!= 1 ~ "Renter"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Contract updated</td>
+<td><code>CACHE-manifest.md</code></td>
+<td>New row <code>home_ownership</code> ← <code>DHH_OWN</code>; Owner 50,101 / Renter 13,576</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Shape restated</td>
+<td><code>pipeline.md</code></td>
+<td>Analytic table 63,843 × <strong>70</strong> — 70 columns since the admission; 69 before</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Re-verified</td>
+<td><code>3-test-ellis-cache.R</code></td>
+<td>Lanes 0–3 re-run; 24 assertions, <strong>0 failed</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 95%;">
+<p>All seven artefacts are mirrored into the site’s Appendix, so the trace can be checked <strong>without visiting the source repository</strong>. The change was not finished when the recode compiled — it was finished when the manifest, the column count, and the assertion suite all agreed again. The fidelity audit’s current status is reported as <strong>WARN, not PASS</strong>, because a check that never fails is not a check.</p>
+</div>
+</section>
+<section id="operationalization-harness" class="slide level2" data-background-color="#EBDEF0" style="font-size: 45%;">
+<h2>4. Operationalization — Harness</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><strong>Pipeline Orchestra</strong></p>
+<p><span style="font-size: 80%;"><em>Engineering: raw data → trustworthy rectangle</em></span></p>
+<div style="font-size: 100%;">
+<p><strong>Agent</strong> <code>@pipeline-engineer</code></p>
+<p><strong>Writes to</strong> <code>manipulation/</code></p>
+<p><strong>Flow</strong> source → ferry → ellis → served</p>
+<p><strong>Governs</strong> transport, transformation, and validation of incoming data</p>
+<p><strong>Accountability</strong> INPUT-manifest records what arrived; CACHE-manifest records what is served</p>
+</div>
+</div><div class="column" style="width:33%;">
+<p><strong>Composing Orchestra</strong></p>
+<p><span style="font-size: 80%;"><em>Reporting: clean data → analytical artifact</em></span></p>
+<div style="font-size: 100%;">
+<p><strong>Agent</strong> <code>@report-composer</code></p>
+<p><strong>Writes to</strong> <code>analysis/</code></p>
+<p><strong>Flow</strong> contract → <code>.R</code> laboratory → <code>.qmd</code> publication</p>
+<p><strong>Governs</strong> monothematic engagement: one question, one folder, one artifact family</p>
+<p><strong>Accountability</strong> report-contract anchors scope; artifacts are numbered and inventoried</p>
+</div>
+</div><div class="column" style="width:33%;">
+<p><strong>Publishing Orchestra</strong></p>
+<p><span style="font-size: 80%;"><em>Publishing: existing artifacts → curated site</em></span></p>
+<div style="font-size: 100%;">
+<p><strong>Agents</strong> <code>@interviewer</code> + <code>@writer</code></p>
+<p><strong>Writes to</strong> <code>_frontend-N/</code></p>
+<p><strong>Flow</strong> RAW → EDITED (<code>content/</code>) → PRINTED (<code>_site/</code>)</p>
+<p><strong>Governs</strong> editorial selection, audience register, and protocol fidelity</p>
+<p><strong>Accountability</strong> TRANSFORM_LOG records every change; fidelity report is the gate</p>
+</div>
+</div>
+</div>
+<div style="font-size: 80%;">
+<p>Three agent harnesses, one per workspace directory, each with its own agent, its own flow, and its own accountability artefact. They are described at length in a companion deck, <a href="https://absent-from-chronic-site.vercel.app/content/docs/minding-the-agents.html"><strong>Minding the Agents</strong></a>, which walks each orchestra through its full cycle.</p>
+</div>
+</section></section>
+<section>
+<section id="outcomes-three-takeaways" class="title-slide slide level1 center" data-background-color="#FADBD8" style="font-size: 60%;">
+<h1>5. Outcomes — Three Takeaways</h1>
+<div style="font-size: 110%;">
+<ul>
+<li><strong>Function beats diagnosis.</strong> Needing help with errands (RR <strong>2.48</strong>) outranks every chronic condition in the model.</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>Mind and pain, not organ.</strong> Mood disorder (<strong>2.12</strong>), bowel disorder (<strong>1.65</strong>), migraine (<strong>1.63</strong>), back problems (<strong>1.44</strong>) survive — hypertension, diabetes, heart disease, cancer do not.</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>The ceiling is the finding.</strong> McFadden under <strong>0.04</strong>, held-out C of <strong>0.61</strong>. Forty-eight variables of cross-sectional self-report explain very little of who misses work.</li>
+</ul>
+</div>
+</section>
+<section id="outcomes-everything-on-one-row-axis" class="slide level2" data-background-color="#FADBD8" style="font-size: 42%;">
+<h2>5. Outcomes — Everything on One Row Axis</h2>
+<p><span style="font-size: 105%;"><em>What predictors exist, how each relates to the outcome on its own, which survive the penalty, and what they estimate once fitted among the survivors — five panels, one row order, one x window.</em></span></p>
+<div style="margin: 0; padding: 0; width: 100%; display: flex; align-items: center; justify-content: center;">
+<p><img src="images/eda-81-g11-all-specifications.png" alt="Five aligned forest panels sharing one row axis: a bivariate panel from model-00 with one model per predictor, then Models 1 through 4, with rows grouped by Andersen domain — Exposure, Predisposing, Facilitating, Needs, and Survey design — and rate ratios on a log scale" style="width: 100%; height: auto; max-height: 68vh; object-fit: contain; display: block;"></p>
+</div>
+<p><span style="font-size: 80%;"><strong>g11</strong> · <a href="https://absent-from-chronic-site.vercel.app/content/analysis/story-1.html">Story 1: Reading the Four Models (eda-81)</a></span></p>
+<div style="font-size: 95%;">
+<p>A variable a specification declined has <strong>no estimate in its panel</strong> — selection is therefore visible without spending a column on it. A blank row was offered and refused; a grey cross was never shown. The axis is <code>log10</code>: the penalty acts on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>, so <code>RR = 0.5</code> and <code>RR = 2.0</code> cost it exactly the same.</p>
+</div>
+</section>
+<section id="outcomes-limitations-future-directions" class="slide level2" data-background-color="#FADBD8" style="font-size: 42%;">
+<h2>5. Outcomes — Limitations &amp; Future Directions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Limitations</strong></p>
+<div style="font-size: 100%;">
+<ul>
+<li><strong>No causal claim.</strong> Condition status and days absent are reported in the same interview. No further modelling of two cross-sections changes that.</li>
+<li><strong>No variance instrument as specified.</strong> The proposal asks for 500 bootstrap replicate weights; CCHS carries them only from the 2015 cycle. Three substitutes are reported, each a <strong>lower bound</strong> on the understatement.</li>
+<li><strong>The selected set is unstable.</strong> 10 variables on the full sample, <strong>8 to 38</strong> across training folds. “The variables LASSO selected” is not “the variables LASSO would select.”</li>
+<li><strong>Elimination ≠ irrelevance.</strong> With 63–93% comorbidity overlap, the likely reading of a dropped term is that a correlated neighbour crowded it out.</li>
+<li><strong>Nineteen requested, seventeen mapped.</strong> The manifest records the shortfall rather than rounding it off.</li>
+<li><strong>24% dropped to complete cases</strong> — currently the largest untested threat to external validity.</li>
+<li><strong>Not a prediction instrument.</strong> C of 0.61 is no basis for screening, forecasting, or targeting.</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Future Directions</strong> — <em>in the order the argument implies</em></p>
+<div style="font-size: 100%;">
+<ol type="1">
+<li><strong>Elastic net over a grid of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</strong> The highest-value single change: comorbidity is exactly the situation where L1 misbehaves. Converts a binary retained-or-dropped verdict into a graded one.</li>
+<li><strong>Two-part / hurdle decomposition.</strong> Separates <em>whether</em> a worker is absent from <em>how long</em>. Non-zero share and mean days do not move together across subgroups.</li>
+<li><strong>A forest.</strong> Settles the ceiling question — same concordance means the limit belongs to the data; better means there is interaction structure the additive form cannot see.</li>
+<li><strong>Condition burden and clusters as exposures.</strong> Workers with chronic fatigue syndrome carry 3.3 other conditions on average.</li>
+</ol>
+<p>The first three are each <strong>one script on the existing frame</strong>; the fourth needs one Ellis pass.</p>
+<p><strong>What cannot be fixed from here:</strong> the direction of the association. That needs longitudinal linkage or an administrative absence record — not a better estimator.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section id="leadership-project-management" class="title-slide slide level1 center" data-background-color="#D4EFDF" style="font-size: 42%;">
+<h1>6. Leadership &amp; Project Management</h1>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div style="font-size: 88%;">
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Who</th>
+<th>Contributes</th>
+<th>Receives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data Scientist</strong></td>
+<td>Andriy Koval</td>
+<td>Delivers on the request — pipeline, analysis, reporting</td>
+<td>A request precise enough to be answerable, and infrastructure that holds</td>
+</tr>
+<tr class="even">
+<td><strong>Researcher</strong></td>
+<td>Marc-André Blanchette</td>
+<td>Formulates the information request and judges whether the answer is scientifically meaningful</td>
+<td>An analytic product built to the question actually asked</td>
+</tr>
+<tr class="odd">
+<td><strong>Support</strong></td>
+<td>Oleksandr Koval</td>
+<td>DevOps: environments, harnesses, reproducible builds</td>
+<td>Mentorship in data science and analytics</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 92%;">
+<p>Three collaborators, three institutions, three lanes. Nobody reports to anybody. What holds the project together is not authority but <strong>written interfaces</strong> — the proposal, the accord, and the publishing contract.</p>
+</div>
+</div><div class="column" style="width:54%;">
+<div style="font-size: 92%;">
+<ul>
+<li><strong>The plan was written before the data was opened.</strong> The proposal fixes variables, exclusion order, four LASSO specifications <em>and their anticipated counts</em> (16 / 9 / 32 / 33). A plan that cannot be failed against is not a plan — this one can, and in two places it was.</li>
+<li><strong>Risk was built into the run, not into a register.</strong> No risk register exists, and none was written retrospectively. Instead: <strong>24 assertions</strong> in the last lane of every execution, a manifest-versus-Parquet validation skill, a two-tier harmonisation white-list, and backend–frontend separation that keeps microdata out of the site.</li>
+<li><strong>The stakeholder test is what happens when the data refuses.</strong> §5.3/5.5/5.7/5.9 require 500 bootstrap replicate weights; the 2010 and 2014 PUMFs carry none. §2.2 names 19 conditions; 17 map. Both shortfalls are written where a reader of the results meets them, not in a footnote.</li>
+<li><strong>The custodian has no lane and a veto.</strong> Statistics Canada’s terms of use are why <code>data-private/</code> exclusion is a control rather than a housekeeping preference.</li>
+<li><strong>Lessons.</strong> <em>The interface is the deliverable</em> — every blocked lane traced to a handover that lived as an understanding rather than a file. <em>A control that has never failed is not yet evidence</em> — the assertion suite became load-bearing only once it forced a re-verification.</li>
+<li><strong>What I would do differently.</strong> Test the variance instrument before committing to the cycles; separate selection from estimation at the design stage; pin the environment exactly rather than by floor.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank You!</h1>
+<p><span style="font-size: 150%;">Questions? Comments?</span></p>
+<p><span style="font-size: 90%;"><em>The authors thank Statistics Canada for the Canadian Community Health Survey, and the Canadian Research Data Centre Network for access to the Public Use Microdata Files.</em></span></p>
+</section>
+
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+
+</section>
+<section id="knowledge-is-a-conversation" class="slide level2" data-background-color="#FFFFFF" style="font-size: 80%;">
+<h2>Knowledge is a conversation</h2>
+<p><span style="font-size: 70%;"><em>The New Model of Communication</em></span></p>
+<div style="margin: 0; text-align: center;">
+<p><img src="images/ai-communication-model.png" alt="Human author and human reader, each paired with an LLM, communicating through shared dialects of data expression" style="max-height: 80vh; max-width: 100%; display: block; margin: 0 auto;"></p>
+</div>
+</section>
+<section id="varieties-of-analytic-experience" class="slide level2" data-background-color="#FFFFFF" style="font-size: 80%;">
+<h2>Varieties of Analytic Experience</h2>
+<p><span style="font-size: 70%;"><em>Lies that helps us see the truth</em></span></p>
+<div style="margin: 0; text-align: center;">
+<p><img src="images/dialects-data-expression.jpg" alt="Seven representations of the same longitudinal model: tabular, algebraic, graphical, semantic, syntactic, numeric, and schematic" style="max-height: 70vh; max-width: 100%; display: block; margin: 0 auto;"></p>
+</div>
+</section>
+<section id="section" class="slide level2" data-background-color="#FFFFFF">
+<h2></h2>
+<div style="width: 100%; text-align: right; font-size: 80%;">
+<div style="text-align: left;">
+<em>People who see only one side of things engage in quarrels and disputes</em>
+</div>
+<div style="text-align: left;">
+<em>(Udana 6.4)</em>
+</div>
+</div>
+<div style="margin: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 660px;">
+<p><img src="images/Blind_men_and_elephant3.jpg" alt="Epistemological elephant" style="max-height: 100%; max-width: 100%; width: auto; height: auto; display: block;"></p>
+</div>
+<div class="footer footer-default">
+<p>Absent from Chronic | Project overview</p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    (function () {
+      var styleTagId = "overview-top-left-anchor-style";
+      var anchor = {
+        left: 24,
+        top: 24,
+        marginRight: 24,
+        marginBottom: 24,
+        initialized: false
+      };
+
+      function applyPan(slidesEl, dx, dy) {
+        if (!dx && !dy) {
+          return;
+        }
+
+        var transform = window.getComputedStyle(slidesEl).transform;
+        if (!transform || transform === "none") {
+          return;
+        }
+
+        if (transform.indexOf("matrix3d(") === 0) {
+          var values3d = transform
+            .slice(9, -1)
+            .split(",")
+            .map(function (v) {
+              return parseFloat(v.trim());
+            });
+
+          values3d[12] += dx;
+          values3d[13] += dy;
+          slidesEl.style.transform = "matrix3d(" + values3d.join(",") + ")";
+          return;
+        }
+
+        if (transform.indexOf("matrix(") === 0) {
+          var values2d = transform
+            .slice(7, -1)
+            .split(",")
+            .map(function (v) {
+              return parseFloat(v.trim());
+            });
+
+          values2d[4] += dx;
+          values2d[5] += dy;
+          slidesEl.style.transform = "matrix(" + values2d.join(",") + ")";
+        }
+      }
+
+      function getFirstSlide() {
+        return document.querySelector(".reveal .slides > section");
+      }
+
+      function initializeTopLeftAnchor() {
+        if (anchor.initialized || typeof Reveal === "undefined" || !Reveal.isOverview()) {
+          return;
+        }
+
+        var slidesEl = document.querySelector(".reveal .slides");
+        var firstSlide = getFirstSlide();
+        if (!slidesEl || !firstSlide) {
+          return;
+        }
+
+        // Start every overview session with A1 pinned to top-left.
+        var firstRect = firstSlide.getBoundingClientRect();
+        var dx = anchor.left - firstRect.left;
+        var dy = anchor.top - firstRect.top;
+        applyPan(slidesEl, dx, dy);
+        anchor.initialized = true;
+      }
+
+      function keepCurrentSlideVisible() {
+        if (typeof Reveal === "undefined" || !Reveal.isOverview()) {
+          return;
+        }
+
+        var slidesEl = document.querySelector(".reveal .slides");
+        var currentSlide = Reveal.getCurrentSlide();
+        var firstSlide = getFirstSlide();
+        if (!slidesEl || !currentSlide || !firstSlide) {
+          return;
+        }
+
+        var currentRect = currentSlide.getBoundingClientRect();
+        var firstRect = firstSlide.getBoundingClientRect();
+
+        var minLeft = anchor.left;
+        var minTop = anchor.top;
+        var maxRight = window.innerWidth - anchor.marginRight;
+        var maxBottom = window.innerHeight - anchor.marginBottom;
+
+        var dx = 0;
+        var dy = 0;
+
+        // Pan only when the focused slide exits the current viewport bounds.
+        if (currentRect.left < minLeft) {
+          dx = minLeft - currentRect.left;
+        } else if (currentRect.right > maxRight) {
+          dx = maxRight - currentRect.right;
+        }
+
+        if (currentRect.top < minTop) {
+          dy = minTop - currentRect.top;
+        } else if (currentRect.bottom > maxBottom) {
+          dy = maxBottom - currentRect.bottom;
+        }
+
+        // Never overshoot past A1 anchor on left/top.
+        if (firstRect.left + dx > minLeft) {
+          dx = minLeft - firstRect.left;
+        }
+        if (firstRect.top + dy > minTop) {
+          dy = minTop - firstRect.top;
+        }
+
+        applyPan(slidesEl, dx, dy);
+      }
+
+      function scheduleAdjust() {
+        // Run after Reveal computes overview transforms.
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            initializeTopLeftAnchor();
+            keepCurrentSlideVisible();
+          });
+        });
+      }
+
+      function ensureNoTransitionInOverview() {
+        if (document.getElementById(styleTagId)) {
+          return;
+        }
+
+        var styleTag = document.createElement("style");
+        styleTag.id = styleTagId;
+        styleTag.textContent = ".reveal.overview .slides { transition: none !important; }";
+        document.head.appendChild(styleTag);
+      }
+
+      function bindWhenReady() {
+        if (typeof Reveal === "undefined" || !Reveal.on) {
+          return;
+        }
+
+        Reveal.on("overviewshown", function () {
+          ensureNoTransitionInOverview();
+          scheduleAdjust();
+        });
+        Reveal.on("overviewhidden", function () {
+          anchor.initialized = false;
+        });
+        Reveal.on("slidechanged", scheduleAdjust);
+        Reveal.on("resize", scheduleAdjust);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bindWhenReady);
+      } else {
+        bindWhenReady();
+      }
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

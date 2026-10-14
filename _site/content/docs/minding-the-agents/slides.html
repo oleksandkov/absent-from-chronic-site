@@ -397,15 +397,16 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Andriy Koval 
+Andriy Koval
 </div>
 </div>
 </div>
 
   <p class="date">2026-07-13</p>
 </section>
-<section id="about-the-audience" class="title-slide slide level1 center">
-<h1><span style="font-size: 80%;">About the Audience</span></h1>
+<section>
+<section id="a-about-the-audience" class="title-slide slide level1 center">
+<h1><span style="font-size: 80%;">(A) About the Audience</span></h1>
 <div style="font-size: 80%;">
 <ul>
 <li>those who need to analyse data to answer research questions</li>
@@ -414,10 +415,8 @@ Andriy Koval
 </ul>
 </div>
 </section>
-
-<section>
-<section id="a-starting-thoughts" class="title-slide slide level1 center">
-<h1><span style="font-size: 80%;">(A) Starting Thoughts</span></h1>
+<section id="a1-about-the-author" class="slide level2">
+<h2><span style="font-size: 80%;">(A1) About the Author</span></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div style="margin: 0;">
@@ -436,154 +435,190 @@ Andriy Koval
 </div>
 </div>
 </section>
-<section id="a1-data-analysis-as-software" class="slide level2">
-<h2><span class="nostretch" style="font-size: 52%; margin-bottom: 0;">(A1) Data Analysis as Software</span></h2>
+<section id="a2-data-analysis-as-software" class="slide level2">
+<h2><span class="nostretch" style="font-size: 52%; margin-bottom: 0;">(A2) Data Analysis as Software</span></h2>
 <style>
-.book-grid .book-cell {
+/* Sized in px against the 1122 x 794 reveal canvas so the grid survives the
+   decktape capture at any window size. */
+.a1-grid {
+  display: grid;
+  gap: 0.2rem 0.4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: 610px;
+  margin: 0.2rem auto 0;
+  width: 70%;
+}
+
+.a1-grid .book-cell {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 0;
 }
 
-.book-grid .book-cell .book-year {
-  flex: 0 0 auto;
-  font-size: 0.75em;
+.a1-grid .book-year {
+  font-size: 0.55em;
   font-weight: bold;
-  line-height: 1.3;
-  margin: 0 0 0.2rem 0;
+  line-height: 1.1;
+  margin: 0 0 0.1rem 0;
 }
 
-.book-grid .book-cell > p {
-  align-items: center;
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
+.a1-grid .book-cell figure,
+.a1-grid .book-cell figure > p,
+.a1-grid .book-cell a {
+  display: block;
   margin: 0;
-  width: 100%;
-}
-
-.book-grid .book-cell a {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  text-align: center;
 }
 
 .a1-grid .book-cell img {
-  display: block;
-  height: 27vh !important;
+  display: inline-block;
+  height: auto !important;
   margin: 0;
-  max-height: 27vh !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  width: auto !important;
-}
-
-.a2-grid .book-cell img {
-  display: block;
-  height: 33vh !important;
-  margin: 0;
-  max-height: 33vh !important;
+  max-height: 262px !important;
   max-width: 100% !important;
   object-fit: contain !important;
   width: auto !important;
 }
 </style>
-<div class="book-grid a1-grid nostretch" style="width: 78%; height: 68vh; margin: 0.2rem auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 0.35rem 0.2rem;">
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="a1-grid nostretch">
+<div class="book-cell">
 <div class="book-year">
 2005
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=Leland+Wilkinson+Grammar+of+Graphics" target="_blank"><img data-src="images/books/wilkinson-2005-grammar-of-graphics.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=Leland+Wilkinson+Grammar+of+Graphics" target="_blank"><img data-src="images/books/wilkinson-2005-grammar-of-graphics.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 1985
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=William+Cleveland+Elements+of+Graphing+Data" target="_blank"><img data-src="images/books/cleveland-1985-elements-graphing-data.png" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=William+Cleveland+Elements+of+Graphing+Data" target="_blank"><img data-src="images/books/cleveland-1985-elements-graphing-data.png"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 1983
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=John+Chambers+Graphical+Methods+for+Data+Analysis" target="_blank"><img data-src="images/books/chambers-1983-graphical-methods.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=John+Chambers+Graphical+Methods+for+Data+Analysis" target="_blank"><img data-src="images/books/chambers-1983-graphical-methods.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 1983
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=Edward+Tufte+Visual+Display+of+Quantitative+Information" target="_blank"><img data-src="images/books/tufte-1983-visual-display.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=Edward+Tufte+Visual+Display+of+Quantitative+Information" target="_blank"><img data-src="images/books/tufte-1983-visual-display.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 1977
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=John+Tukey+Exploratory+Data+Analysis" target="_blank"><img data-src="images/books/tukey-1977-eda.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=John+Tukey+Exploratory+Data+Analysis" target="_blank"><img data-src="images/books/tukey-1977-eda.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 1925
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.amazon.ca/s?k=R+A+Fisher+Statistical+Methods+for+Research+Workers" target="_blank"><img data-src="images/books/fisher-1925-statistical-methods.jpeg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://www.amazon.ca/s?k=R+A+Fisher+Statistical+Methods+for+Research+Workers" target="_blank"><img data-src="images/books/fisher-1925-statistical-methods.jpeg"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="a2-reproducible-research" class="slide level2">
-<h2><span class="nostretch" style="font-size: 52%; margin-bottom: 0;">(A2) Reproducible Research</span></h2>
-<div class="book-grid a2-grid nostretch" style="width: 78%; height: 40vh; margin: 0.2rem auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(1, minmax(0, 1fr)); gap: 0.35rem 0.2rem;">
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<section id="a3-reproducible-research" class="slide level2">
+<h2><span class="nostretch" style="font-size: 52%; margin-bottom: 0;">(A3) Reproducible Research</span></h2>
+<style>
+.a2-grid {
+  display: grid;
+  gap: 0.2rem 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: 520px;
+  margin: 0.4rem auto 0;
+  width: 94%;
+}
+
+.a2-grid .book-cell {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+}
+
+.a2-grid .book-year {
+  font-size: 0.55em;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0 0 0.15rem 0;
+}
+
+.a2-grid .book-cell figure,
+.a2-grid .book-cell figure > p,
+.a2-grid .book-cell a {
+  display: block;
+  margin: 0;
+  text-align: center;
+}
+
+.a2-grid .book-cell img {
+  display: inline-block;
+  height: auto !important;
+  margin: 0;
+  max-height: 470px !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  width: auto !important;
+}
+</style>
+<div class="a2-grid nostretch">
+<div class="book-cell">
 <div class="book-year">
 2009
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://ggplot2-book.org/" target="_blank"><img data-src="images/books/wickham-2009-ggplo2.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://ggplot2-book.org/" target="_blank"><img data-src="images/books/wickham-2009-ggplo2.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 2013
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://github.com/yihui/knitr-book" target="_blank"><img data-src="images/books/xie-2013-knitr.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://github.com/yihui/knitr-book" target="_blank"><img data-src="images/books/xie-2013-knitr.jpg"></a></p>
 </figure>
 </div>
 </div>
-<div class="book-cell" style="min-height: 0; overflow: hidden;">
+<div class="book-cell">
 <div class="book-year">
 2017
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://r4ds.had.co.nz/" target="_blank"><img data-src="images/books/wickham-2017-r4ds.jpg" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; margin: 0;"></a></p>
+<p><a href="https://r4ds.had.co.nz/" target="_blank"><img data-src="images/books/wickham-2017-r4ds.jpg"></a></p>
 </figure>
 </div>
 </div>
@@ -972,7 +1007,7 @@ Generic fugal structure — <a href="https://composerfocus.com/how-to-write-a-fu
 <p><img src="images/Blind_men_and_elephant3.jpg" alt="Epistemological elephant" style="max-height: 120%; max-width: 100%; width: auto; height: auto; display: block;"></p>
 </div>
 <div class="footer footer-default">
-<p>Andriy Koval | minding-the-agents | 2026-07-13</p>
+<p>Andriy Koval | Minding the Agents | <a href="https://www.ouhsc.edu/bbmc/index.html">BBMC OUHSC</a> | 2026-07-13</p>
 </div>
 </section>
     </div>
@@ -991,7 +1026,6 @@ Generic fugal structure — <a href="https://composerfocus.com/how-to-write-a-fu
   <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1159,27 +1193,9 @@ Generic fugal structure — <a href="https://composerfocus.com/how-to-write-a-fu
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
